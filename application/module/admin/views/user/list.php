@@ -2,7 +2,9 @@
   $columnPost		= $this->arrParam['filter_column'] ?? '';
 	$orderPost		= $this->arrParam['filter_column_dir'] ?? '';
   $lblID      	= Helper::cmsLinkSort('ID', 'id', $columnPost, $orderPost);
-  $lblName    	= Helper::cmsLinkSort('Name', 'name', $columnPost, $orderPost);
+  $lblUserName  = Helper::cmsLinkSort('UserName', 'username', $columnPost, $orderPost);
+  $lblEmail  = Helper::cmsLinkSort('Email', 'email', $columnPost, $orderPost);
+  $lblFullName  = Helper::cmsLinkSort('FullName', 'fullname', $columnPost, $orderPost);
   $lblCreated 	= Helper::cmsLinkSort('Created', 'created', $columnPost, $orderPost);
   $lblOrdering 	= Helper::cmsLinkSort('Ordering', 'ordering', $columnPost, $orderPost);
   $lblStatus  	= Helper::cmsLinkSort('Status', 'status', $columnPost, $orderPost);
@@ -12,6 +14,8 @@
   $hiddenColumn    = Helper::cmsInput('hidden','filter_column','id');
   $hiddenColumnDir = Helper::cmsInput('hidden','filter_column_dir',$this->arrParam['filter_column_dir']??'');
   $hiddenPage      = Helper::cmsInput('hidden','filter_page','1');
+  $nameController = $this->arrParam['controller'];
+
   echo Helper::createTitle($this->_title);
 ?>
 
@@ -24,7 +28,7 @@
         <?php echo $message; ?> <!-- MESSAGE -->
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Table Group</h3>
+              <h3 class="card-title">Data Table <?php echo $nameController; ?></h3>
               <?php echo $filter; ?> <!-- FILTER -->
             </div>
             <!-- /.card-header -->
@@ -40,11 +44,13 @@
                           </div>
                         </th>
                         <th><?php echo $lblID ?></th>
-                        <th style="width:30%"><?php echo $lblName ?> </th>
+                        <th><?php echo $lblUserName ?> </th>
+                        <th><?php echo $lblEmail ?> </th>
+                        <th><?php echo $lblFullName ?> </th>
                         <th><?php echo $lblCreated ?></th>
                         <th><?php echo $lblOrdering ?></th>
                         <th><?php echo $lblStatus ?></th>
-                        <th style="width:25%">Action</th>
+                        <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -54,9 +60,9 @@
                       foreach ($this->items as $key => $value) {
                         $status   = HTML::showStatus($value['status'],$value['id'],$this->arrParam['controller']);
                         $created  = HTML::dateFormat($value['created']);
-                        $name     = HTML::addSpan($value['name']);
-                        $urlForm  = URL::createLink('admin','group','form',['id' => $value['id']]);
-                        $urlDelete = URL::createLink('admin','group','delete',['id' => $value['id']]);
+                        $username = HTML::addSpan($value['username']);
+                        $urlForm  = URL::createLink('admin',$nameController,'form',['id' => $value['id']]);
+                        $urlDelete = URL::createLink('admin',$nameController,'delete',['id' => $value['id']]);
                         $xhtml .= '<tr>
                                     <td>
                                       <div class="icheck-danger d-inline">
@@ -66,7 +72,9 @@
                                       </div>
                                     </td>
                                     <td>'.$value['id'].'</td>
-                                    <td>'.$name.'</td>
+                                    <td>'.$username.'</td>
+                                    <td>'.$value['email'].'</td>
+                                    <td>'.$value['fullname'].'</td>
                                     <td>'.$created.'</td>
                                     <td>'.$value['ordering'].'</td>
                                     <td>'.$status.'</td>

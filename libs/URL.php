@@ -8,6 +8,11 @@
         }
       }
       return $result;
-		}
+    }
+    public static function redirect($module, $controller, $action, $params = null, $router = null){
+      $link	= self::createLink($module, $controller, $action, $params, $router);
+      header('location: ' . $link);
+      exit();
+    }
 	}
 ?>

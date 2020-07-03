@@ -1,5 +1,5 @@
 <?php
-include 'application/admin/controllers/AdminController.php';
+include 'application/module/admin/controllers/AdminController.php';
 
 class GroupController extends AdminController{
 	

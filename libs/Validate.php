@@ -30,8 +30,11 @@ class Validate{
 	
 	// Set error
 	public function setError($element, $message){
+		
 		$strElement = str_replace('_', ' ', $element);
+		
 		if(array_key_exists($element, $this->errors)){
+			
 			$this->errors[$element] .= ' - ' . $message;
 		}else{
 			$this->errors[$element] = '<b>' . ucwords($strElement) . ':</b> ' . $message;

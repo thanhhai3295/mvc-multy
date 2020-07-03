@@ -52,7 +52,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <?php
-    require_once APPLICATION_PATH. $this->_moduleName . DS . 'views' . DS .  $this->_fileView . '.php';
+    require_once MODULE_PATH. $this->_moduleName . DS . 'views' . DS .  $this->_fileView . '.php';
 
   ?>
     <!-- Content Header (Page header) -->

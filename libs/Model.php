@@ -1,5 +1,5 @@
 <?php
-
+ 
 class Model
 {
     /**
@@ -2492,4 +2492,10 @@ class Model
                     $this->_query .= $this->_buildPair ($operator, $val);
         }
     }
+
+    public function isExist($query){
+        $user = $this->rawQueryOne($query);
+        if(!empty($user)) return true;
+        else return false; 
+	}
 }

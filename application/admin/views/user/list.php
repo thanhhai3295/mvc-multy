@@ -52,7 +52,7 @@
                     $xhtml = '';
                     if (!empty($this->items)) {
                       foreach ($this->items as $key => $value) {
-                        $status   = HTML::showStatus($value['status'],$value['id']);
+                        $status   = HTML::showStatus($value['status'],$value['id'],$this->arrParam['controller']);
                         $created  = HTML::dateFormat($value['created']);
                         $name     = HTML::addSpan($value['name']);
                         $urlForm  = URL::createLink('admin','group','form',['id' => $value['id']]);

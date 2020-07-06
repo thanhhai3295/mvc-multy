@@ -218,7 +218,13 @@ class Helper{
                   </div>
               </div>';
     return $xhtml;          
-  }
+	}
+	public static function createTextArea($name, $value, $placeholder, $error = NULL){	
+		$invalid = ($error != NULL) ? 'is-invalid' : '';
+		$xhtml = '<textarea name="'.$name.'" class="form-control '.$invalid.'" placeholder="'.$placeholder.'" rows="7">'.$value.'</textarea>';
+		$xhtml .= Helper::createError($error);
+		return $xhtml;
+	}
 	public static function createInput($type, $name, $value, $placeholder, $error = NULL){	
 		$invalid = ($error != NULL) ? 'is-invalid' : '';
 		$xhtml = '<input type="'.$type.'" name="'.$name.'" class="form-control '.$invalid.'" value="'.$value.'" placeholder="'.$placeholder.'" />';
@@ -278,5 +284,23 @@ class Helper{
 		$xhtml .= Helper::cmsInput('hidden','form[token]',time());
 		return $xhtml;
 	}
-
+	public static function statistics($data, $count, $params) {
+		$xhtml = '';
+		foreach ($data as $key => $value) {
+			$link = URL::createLink($params['module'],$key,'list');
+			$xhtml .= '<div class="col-lg-3 col-6">
+									<div class="small-box '.$value['bg'].'">
+										<div class="inner text-white">
+											<h3>'.$count[$key].'</h3>
+											<p>'.ucfirst($key).'</p>
+										</div>
+										<div class="icon">
+											<i class="text-white ion '.$value['icon'].'" ></i>
+										</div>
+										<a href="'.$link.'" class="small-box-footer" style="color: #fff!important;">More info <i class="fas fa-arrow-circle-right"></i></a>
+									</div>
+								</div>';
+		}
+		return $xhtml;
+	}
 }

@@ -2497,5 +2497,18 @@ class Model
         $user = $this->rawQueryOne($query);
         if(!empty($user)) return true;
         else return false; 
+    }
+    public function fetchPairs($query){
+		$result = array();
+		if(!empty($query)){
+			$resultQuery = $this->query($query);
+			if(mysqli_num_rows($resultQuery) > 0){				
+				while($row = mysqli_fetch_assoc($resultQuery)){
+					$result[$row['id']] = $row['name'];
+				}
+				mysqli_free_result($resultQuery);
+			}
+		}
+		return $result;
 	}
 }

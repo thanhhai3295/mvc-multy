@@ -46,8 +46,9 @@ class IndexController extends Controller{
 		$this->_templateObj->setFileTemplate('index.php');
 		$this->_templateObj->setFileConfig('template.ini');
 		$this->_templateObj->load();
-		$this->_view->countGroup = $this->_model->countItem(TBL_GROUP);
-		$this->_view->_title 		= 'Index';
+		$this->_view->countGroup = $this->_model->countItem();
+		$this->_view->_title 	 	= 'Dashboard';
+		$this->_view->arrParams = $this->_arrParam;
 		$this->_view->render('index/dashboard');
 	}
 	

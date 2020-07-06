@@ -3,8 +3,9 @@
 <head>
   <?php echo $this->_metaHTTP;?>
   <?php echo $this->_metaName;?>
-  <?php echo $this->_title;?>
+  <title><?php echo $this->_title ?></title>
   <?php echo $this->_cssFiles;?>
+ 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 

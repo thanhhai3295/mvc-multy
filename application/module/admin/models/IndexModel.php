@@ -13,9 +13,14 @@ class IndexModel extends Model{
 		
 	}
 
-	public function countItem($tableName){
-		$sql = "SELECT count(id) as `count` FROM `$tableName`";
-		$count = $this->rawQueryOne ($sql);
-		return $count['count'];
+	public function countItem(){
+		$arrTable = [TBL_GROUP,TBL_USER,TBL_CATEGORY,TBL_BOOK];
+		$result = [];
+		foreach ($arrTable as $key => $value) {
+			$query = "SELECT count(id) as `count` FROM `$value`";
+			$tmp = $this->rawQueryOne($query);
+			$result[$value] = $tmp['count'];
+		}
+		return $result;
 	}
 }

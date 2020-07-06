@@ -34,7 +34,7 @@
   ],    
   'book' => ['icon' => 'fa-book','name'=>'user','link'=>$linkDashBoard,'child' => [
     ['icon' => 'fa-circle','name'=>'List','link'=>$linkBookList],
-    ['icon' => 'fa-circle','name'=>'Add','link'=>$linkBookList]
+    ['icon' => 'fa-circle','name'=>'Add','link'=>$linkBookForm]
   ]
 ],    
   ];

@@ -18,7 +18,7 @@
       </li>
       
     </ul>
-
+    
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
@@ -42,6 +42,12 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" id="logout" href="<?php echo URL::createLink('admin','index','logout') ?>" role="button" data-toggle="tooltip" data-placement="top" title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -53,7 +59,6 @@
   <div class="content-wrapper">
   <?php
     require_once MODULE_PATH. $this->_moduleName . DS . 'views' . DS .  $this->_fileView . '.php';
-
   ?>
     <!-- Content Header (Page header) -->
     
@@ -69,8 +74,6 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-
 <?php echo $this->_jsFiles;?>
 
 </body>

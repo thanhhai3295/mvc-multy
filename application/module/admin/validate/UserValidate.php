@@ -14,7 +14,7 @@
           ->addRule('email', 'email-notExistRecord', array('database' => $this->model, 'query' => $this->query['email'], 'min' => 3, 'max' => 25))
           ->addRule('fullname', 'string', array('min' => 3, 'max' => 100))
           ->addRule('password', 'string', array('min' => 3, 'max' => 100))
-          ->addRule('group', 'status', array('deny' => array('default')))
+          ->addRule('group_id', 'status', array('deny' => array('default')))
           ->addRule('ordering', 'int', array('min' => 1, 'max' => 100))
           ->addRule('status', 'status', array('deny' => array('default')));
     }

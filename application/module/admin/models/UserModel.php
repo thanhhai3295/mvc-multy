@@ -39,7 +39,7 @@ class UserModel extends Model{
 										"email" 		 => $params['form']['email'],
 										"fullname" 		 => $params['form']['fullname'],
 										"password" 		 => $params['form']['password'],
-										"group_id" 		 => $params['form']['group'],
+										"group_id" 		 => $params['form']['group_id'],
 										"status" 	 => $params['form']['status'],
 										"ordering" => (int)($params['form']['ordering']),	
 										"created"	 => date_create('now')->format('Y-m-d')
@@ -62,10 +62,9 @@ class UserModel extends Model{
 	}
 	public function infoItem($params) {
 		$id = $params['id'];
-		$sql = "SELECT name,ordering,status FROM `$this->table`";
-		$sql .= "WHERE id=$id";
-		$result = $this->rawQueryOne($sql);
-		return $result;
+		$this->where('id',$id);
+		$result = $this->get($this->table);
+		return $result[0];
 	}
 	public function countItem($params) {
 		$sql = "SELECT count(id) as `count` FROM `$this->table` WHERE id > 0";

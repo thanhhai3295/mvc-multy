@@ -169,16 +169,14 @@ class Helper{
   public static function createMessage(){
 		$str = '';
 		$type = '';
-    if(!empty($_SESSION)) {
-      foreach ($_SESSION as $key => $value) {
-				$str .= $value;
-				$type = substr($key,3,strlen($key));
-				
-      }
+    if(!empty($_SESSION['msgSuccess'])) {
+				$str .= $_SESSION['msgSuccess'];
+				//$type = substr($key,3,strlen($key));
+      
     } else {
-      return;
+			return;
 		}
-		session_destroy();
+		unset($_SESSION['msgSuccess']);
 		if($type != 'Error') {
 			$xhtml = '<div class="card message shadow-none">
 									<div class="alert alert-success alert-dismissible mb-0">

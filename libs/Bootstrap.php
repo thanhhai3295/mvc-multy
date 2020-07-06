@@ -6,7 +6,6 @@ class Bootstrap{
 	
 	public function init(){
 		$this->setParam();
-		
 		$controllerName	= ucfirst($this->_params['controller']) . 'Controller';
 		$filePath	= MODULE_PATH . $this->_params['module'] . DS . 'controllers' . DS . $controllerName . '.php';
 		if(file_exists($filePath)){
@@ -27,11 +26,9 @@ class Bootstrap{
 			$action		= $this->_params['action'];
 
 			$requestURL	= "$module-$controller-$action";
-			
-			$userInfo	= Session::get('user');
 
+			$userInfo	= Session::get('user');
 			$logged		= ($userInfo['login'] == true && $userInfo['time'] + TIME_LOGIN >= time());
-		
 			// MODULE ADMIN
 			if($module == 'admin'){
 				if($logged == true){
@@ -42,7 +39,7 @@ class Bootstrap{
 						//	URL::redirect('default', 'index', 'notice', array('type' => 'not-permission'));
 						//}
 					}else{
-						echo 'loi~';
+						
 						//URL::redirect('default', 'index', 'notice', array('type' => 'not-permission'));
 					}
 				}else{
@@ -75,6 +72,7 @@ class Bootstrap{
 	
 	// CALL ACTION LOGIN
 	private function callLoginAction($module = 'default'){
+		
 		Session::delete('user');
 		require_once (MODULE_PATH . $module . DS . 'controllers' . DS . 'IndexController.php');
 		$indexController = new IndexController($this->_params);

@@ -33,7 +33,7 @@
     ],
     [
       'label' => Helper::createLabel('group'),
-      'select' => Helper::cmsSelectbox('form[group]','form-control',$arraySelectGroup,$form['group']??'',null,$this->errors['group']??'')
+      'select' => Helper::cmsSelectbox('form[group_id]','form-control',$arraySelectGroup,$form['group_id']??'',null,$this->errors['group_id']??'')
     ],
     [
       'label' => Helper::createLabel('status'),

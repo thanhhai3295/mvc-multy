@@ -18,7 +18,9 @@ function submitForm(){
   $('#adminForm').submit();
 }
 $(document).ready(function() {
-
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 	$.widget.bridge('uibutton', $.ui.button);
   $("div.card.message").fadeTo(2000, 500).slideUp(500, function(){
   $(".div.card.message").slideUp(500);

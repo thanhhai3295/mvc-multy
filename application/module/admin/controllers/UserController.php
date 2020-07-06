@@ -27,6 +27,10 @@ class UserController extends AdminController{
 			$item = $this->_arrParam['form'];
 			$query['username']	= "SELECT `id` FROM `".TBL_USER."` WHERE `username` = '".$item['username']."'";
 			$query['email']			= "SELECT `id` FROM `".TBL_USER."` WHERE `email` = '".$item['email']."'";
+			if(isset($this->_arrParam['id'])){
+				$query['username'] 	.= " AND `id` <> '".$this->_arrParam['id']."'";
+				$query['email'] 		.= " AND `id` <> '".$this->_arrParam['id']."'";
+			}
 			$validate = new UserValidate($this->_arrParam['form'],$query,$this->_model);
 			$this->_arrParam['form'] = $validate->getResult();
 			if($validate->isValid() == false){

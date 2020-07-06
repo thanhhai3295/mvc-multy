@@ -1,8 +1,8 @@
 <?php
-class UserModel extends Model{
+class CategoryModel extends Model{
 	public function __construct(){
 		parent::__construct();
-		$this->setTable(TBL_USER);
+		$this->setTable(TBL_CATEGORY);
 	}
 	public function listItems($params) {
 		$totalItemsPerPage = $params['pagination']['totalItemsPerPage'];
@@ -26,6 +26,7 @@ class UserModel extends Model{
 			$this->orderBy("id","desc");
 		}  
 		$result = $this->arraybuilder()->paginate("`$this->table`", $currentPage);
+
 		return $result;
 	}
 
@@ -35,17 +36,23 @@ class UserModel extends Model{
 	}
 
 	public function saveItem($params) {
-		$data = Array ( "username" 		 => $params['form']['username'],
-										"email" 		 => $params['form']['email'],
-										"fullname" 		 => $params['form']['fullname'],
-										"password" 		 => $params['form']['password'],
-										"group_id" 		 => $params['form']['group_id'],
+		require_once LIBRARY_EXT_PATH . 'Upload.php';
+		require_once LIBRARY_EXT_PATH . 'XML.php';
+		$uploadObj	= new Upload();
+		$params['form']['picture']	= $uploadObj->uploadFile($params['form']['picture'], 'category');
+		$data = Array ( "name" 		 => $params['form']['name'],
+										"created"	 => date_create('now')->format('Y-m-d'),
 										"status" 	 => $params['form']['status'],
-										"ordering" => (int)($params['form']['ordering']),	
-										"created"	 => date_create('now')->format('Y-m-d')
+										"picture"  =>$params['form']['picture'],
+										"ordering" => (int)($params['form']['ordering'])										
 									);
-
 			if(isset($params['id'])) {
+				if(empty($params['form']['picture'])){
+					unset($data['picture']);
+				}else{
+					$uploadObj->removeFile('category', $params['form']['picture_hidden']);
+					$uploadObj->removeFile('category', '60x90-' .  $params['form']['picture_hidden']);
+				}
 				$this->where ('id', $params['id']);
 				$this->update ("`$this->table`", $data);		
 			}else {
@@ -53,6 +60,14 @@ class UserModel extends Model{
 			}
 	}
 	public function deleteItem($id){
+		$query		= "SELECT `id`, `picture` AS `name` FROM `$this->table` WHERE `id` IN ($id)";
+		$arrImage	= $this->rawQueryOne($query);
+		require_once LIBRARY_EXT_PATH . 'Upload.php';
+		$uploadObj	= new Upload();
+		foreach ($arrImage as $value){
+			$uploadObj->removeFile('category', $value);
+			$uploadObj->removeFile('category', '60x90-' . $value);
+		}
 		$this->where('id', $id);
 		$this->delete("`$this->table`");
 	}
@@ -62,9 +77,10 @@ class UserModel extends Model{
 	}
 	public function infoItem($params) {
 		$id = $params['id'];
-		$this->where('id',$id);
-		$result = $this->get($this->table);
-		return $result[0];
+		$sql = "SELECT name,ordering,status,picture FROM `$this->table`";
+		$sql .= "WHERE id=$id";
+		$result = $this->rawQueryOne($sql);
+		return $result;
 	}
 	public function countItem($params) {
 		$sql = "SELECT count(id) as `count` FROM `$this->table` WHERE id > 0";

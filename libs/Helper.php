@@ -225,6 +225,21 @@ class Helper{
 		$xhtml .= Helper::createError($error);
 		return $xhtml;
 	}
+	public static function createUpload($name, $error = NULL){	
+		$invalid = ($error != NULL) ? 'is-invalid' : '';
+		$xhtml = '<div class="input-group mb-3">
+								<div class="custom-file">
+									<input type="file" name="'.$name.'" class="custom-file-input '.$invalid.'" id="inputGroupFile02">
+									<label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+								</div>
+								<div class="input-group-append">
+									<span class="input-group-text" id="">Upload</span>
+								</div>
+							</div>';
+	
+		$xhtml .= Helper::createError($error);
+		return $xhtml;
+	}
 	public static function createError($error) {
 		return '<span id="exampleInputEmail1-error" class="error invalid-feedback d-block">'.$error.'</span>';
 	}

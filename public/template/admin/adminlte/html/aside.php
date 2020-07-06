@@ -6,6 +6,10 @@
   $linkFaqForm = URL::createLink('admin','faq','form');
   $linkUserList = URL::createLink('admin','user','list');
   $linkUserForm = URL::createLink('admin','user','form');
+  $linkCategoryList = URL::createLink('admin','category','list');
+  $linkCategoryForm = URL::createLink('admin','category','form');
+  $linkBookList = URL::createLink('admin','book','list');
+  $linkBookForm = URL::createLink('admin','book','form');
   $arrMenu = [
     'dashboard' => ['icon' => 'fa-tachometer-alt','name'=>'Dashboard','link'=>$linkDashBoard],
     'group' => ['icon' => 'fa-copy','name'=>'Group','link'=>$linkDashBoard,'child' => [
@@ -22,7 +26,17 @@
         ['icon' => 'fa-circle','name'=>'List','link'=>$linkUserList],
         ['icon' => 'fa-circle','name'=>'Add','link'=>$linkUserForm]
       ]
+    ],
+    'category' => ['icon' => 'fa-object-group','name'=>'user','link'=>$linkDashBoard,'child' => [
+      ['icon' => 'fa-circle','name'=>'List','link'=>$linkCategoryList],
+      ['icon' => 'fa-circle','name'=>'Add','link'=>$linkCategoryForm]
     ]
+  ],    
+  'book' => ['icon' => 'fa-book','name'=>'user','link'=>$linkDashBoard,'child' => [
+    ['icon' => 'fa-circle','name'=>'List','link'=>$linkBookList],
+    ['icon' => 'fa-circle','name'=>'Add','link'=>$linkBookList]
+  ]
+],    
   ];
   $xhtml = '';
   foreach ($arrMenu as $key => $value) {

@@ -80,7 +80,7 @@ class GroupModel extends Model{
 	}
 
 	public function countStatus($params) {
-		$sql = "SELECT count(id) as `count`,status FROM `group` WHERE id > 0";
+		$sql = "SELECT count(id) as `count`,status FROM `$this->table` WHERE id > 0";
 		$sql .= " GROUP BY status";
 		$result = $this->rawQuery ($sql);
 		return $result;

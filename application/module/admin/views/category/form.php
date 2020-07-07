@@ -57,6 +57,7 @@
         <!-- form start -->
         <form class="form-horizontal" method="POST" action="" id="adminForm" enctype="multipart/form-data">
           <?php echo Helper::createForm($arrayForm,$action); ?>
+          
         </form>
 
         </div>

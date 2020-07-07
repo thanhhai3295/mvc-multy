@@ -294,8 +294,8 @@ class Helper{
 											<h3>'.$count[$key].'</h3>
 											<p>'.ucfirst($key).'</p>
 										</div>
-										<div class="icon">
-											<i class="text-white ion '.$value['icon'].'" ></i>
+										<div class="icon text-white">
+											<i class="fas '.$value['icon'].'" ></i>
 										</div>
 										<a href="'.$link.'" class="small-box-footer" style="color: #fff!important;">More info <i class="fas fa-arrow-circle-right"></i></a>
 									</div>

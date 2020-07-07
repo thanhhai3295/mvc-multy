@@ -1,9 +1,9 @@
 <?php 
    $data = [
-      'group'    => ['bg' => 'bg-success', 'icon' => 'ion-stats-bars'],
-      'user'     => ['bg' => 'bg-danger', 'icon' => 'ion-person-add'],
-      'category' => ['bg' => 'bg-warning', 'icon' => 'ion-bag'],
-      'book'     => ['bg' => 'bg-primary', 'icon' => 'ion-ios-book-outline'],
+      'group'    => ['bg' => 'bg-success', 'icon' => 'fa-chart-bar'],
+      'user'     => ['bg' => 'bg-danger', 'icon' => 'fa-user-plus'],
+      'category' => ['bg' => 'bg-warning', 'icon' => 'fa-chart-pie'],
+      'book'     => ['bg' => 'bg-primary', 'icon' => 'fa-book-medical'],
    ];
 ?>
 <div class="row">

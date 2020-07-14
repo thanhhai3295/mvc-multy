@@ -1,6 +1,4 @@
 <?php
-include 'application/module/admin/controllers/AdminController.php';
-
 class FaqController extends AdminController{
 	
 	public function listAction(){

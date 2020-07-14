@@ -49,7 +49,7 @@ class Helper{
 		$icon	= '';
 		$order	= ($orderPost == 'asc') ? 'desc' : 'asc';
 		if($column == $columnPost){
-			$icon	= ($order == 'asc') ? ' <i class="fas fa-arrow-up"></i>' : ' <i class="fas fa-arrow-down"></i>';
+			$icon	= ($order == 'asc') ? ' <i class="fas fa-arrow-down"></i>' : ' <i class="fas fa-arrow-up"></i>';
 		}
 		$xhtml = '<span style="cursor:pointer;" onclick="javascript:sortList(\''.$column.'\',\''.$order.'\')">'.$name.$icon.'</span>';
 		return $xhtml;
@@ -72,8 +72,9 @@ class Helper{
 	}
 	
 	// Create Selectbox
-	public static function cmsSelectbox($name, $class, $arrValue, $keySelect = 'default', $style = null, $error = null){
-		$xhtml = '<select style="'.$style.'" name="'.$name.'" class="'.$class.'" >';
+	public static function cmsSelectbox($name, $class, $arrValue, $keySelect = 'default' ,$style = null, $error = null,$event = null){
+		$onchange = ($event != null)? 'onChange="'.$event.'();"' : '';
+		$xhtml = '<select style="'.$style.'" name="'.$name.'" class="'.$class.'" '.$onchange.' >';
 		foreach($arrValue as $key => $value){
 			if($key == $keySelect){
 				$xhtml .= '<option selected="selected" value = "'.$key.'">'.$value.'</option>';
@@ -82,7 +83,7 @@ class Helper{
 			}
 		}
 		$xhtml .= '</select>';
-		$xhtml .= Helper::createError($error);
+		if($error != null) $xhtml .= Helper::createError($error);
 		return $xhtml;
 	}
 	
@@ -167,54 +168,60 @@ class Helper{
   }
   
   public static function createMessage(){
-		$str = '';
-		$type = '';
-    if(!empty($_SESSION['msgSuccess'])) {
-				$str .= $_SESSION['msgSuccess'];
-				//$type = substr($key,3,strlen($key));
-      
-    } else {
-			return;
-		}
-		unset($_SESSION['msgSuccess']);
-		if($type != 'Error') {
-			$xhtml = '<div class="card message shadow-none">
-									<div class="alert alert-success alert-dismissible mb-0">
-									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-									<h5><i class="icon fas fa-check"></i>'.$str.'</h5>
-									</div>
-              	</div>';
+		$str = ''; $type = ''; 
+		if (count($_SESSION) > 1) {
+			foreach ($_SESSION as $key => $value) {
+				if ($key != 'user') {
+					$str = $value;
+					$type = $key;
+					unset($_SESSION[$key]);
+				}
+			}
 		} else {
-			$xhtml = '<div class="card message shadow-none">
-									<div class="alert alert-danger alert-dismissible mb-0">
-									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-									<h5><i class="icon fas fa-times"></i>'.$str.'</h5>
-									</div>
-              	</div>';
+			return ;
 		}
-    
+		$type = strtolower(str_replace('msg','',$type));
+		$xhtml = "<script>message('$str','$type');</script>";
+		
     return $xhtml;
   }
 
-  public static function createFilter($params, $count){
+  public static function createFilter($params, $count, $selectBox = null){
 		$filterStatus = $params['filter_status'] ?? '';
 		$filterSearch = $params['filter_search'] ?? '';
-		$btn = '';
+		$url = URL::createLink($params['module'],$params['controller'],$params['action']);
+		$btn = '<a href="'.$url.'" class="btn btn-outline-primary btn-sm mx-1">Clear</a>';
 
 		foreach ($count as $key => $value) {
 			$status = $value['status'];
 			$style  = $value['status'] == 'inactive' ? 'warning' : 'success';
+			$bg = '';
+			if(!empty($filterStatus)) {
+				if($filterStatus == 'active' && $filterStatus == $status) {
+					$bg = "style='background:#28a745;color:#fff'";
+				} else if ($filterStatus == 'inactive' && $filterStatus == $status) {
+					$bg = "style='background:#ffc107;color:#000'";
+				} else {
+					$bg = "";
+				}
+			}
+			$btn .= '<a href="#" '.$bg.' class="btn btn-outline-'.$style.' btn-sm mx-1" onclick="filterStatus(\''.$status.'\')">'.$status.'('.$value['count'].')</a>';
 			
-			$btn .= '<a href="#" class="btn btn-outline-'.$style.' btn-sm mx-1" onclick="filterStatus(\''.$status.'\')">'.$status.'('.$value['count'].')</a>';
 		}
+		$urlMultiDelete = URL::CreateLink($params['module'],$params['controller'],'multiDelete');
+		$multiDelete = '<a href="#" class="btn btn-outline-danger btn-sm mx-1" onClick="multiDelete(\''.$urlMultiDelete.'\');">Multi Delete</a>';
+		$selectBox = ($selectBox != null) ? $selectBox : '';
 		$xhtml = '<input type="hidden" name="filter_status" value="'.$filterStatus.'" />';
-    $xhtml .= '<div class="card-tools w-50">    
-                  <div class="input-group input-group-sm">    
-                    <div class="filter mr-1">'.$btn.'</div>
+		$xhtml .= '<div class="card-tools">    
+									
+									<div class="input-group input-group-sm">    
+									'.$selectBox.'
+                    <div class="filter mx-1">'.$btn.'</div>
                     <input type="text" name="filter_search" class="form-control float-right" placeholder="Search" value="'.$filterSearch.'">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
+										</div>
+										'.$multiDelete.'
                   </div>
               </div>';
     return $xhtml;          

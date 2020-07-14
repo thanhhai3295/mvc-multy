@@ -5,27 +5,42 @@ class UserModel extends Model{
 		$this->setTable(TBL_USER);
 	}
 	public function listItems($params) {
-		$totalItemsPerPage = $params['pagination']['totalItemsPerPage'];
-		$currentPage 			 = $params['pagination']['currentPage'];
-	
-		$this->pageLimit   = $totalItemsPerPage;
+		$query	= "SELECT `u`.`id`, `u`.`username`, `u`.`email`, `u`.`fullname`, `u`.`created`, `u`.`ordering`, `u`.`status`";
+		$query .= "FROM `$this->table` AS `u`";
+		$group = $params['form']['group'] ?? '';
+		if($group != 'default' && $group != null) {
+			$query .= "INNER JOIN `".TBL_GROUP."` as `g`";
+			$query .= "ON `u`.`group_id` = `g`.`id`";
+			$query .= "WHERE `g`.`id` = ".$group;
+		} else {
+			$query .= "WHERE `u`.`id` > 0";
+		}
+		
+		
 		if(!empty($params['filter_search'])) {
 			$search = $params['filter_search'];
-			$this->where ("name", "%$search%", 'like');
+			$query.= " AND `u`.`username` LIKE '%$search%'";
 		}
 		
 		if(!empty($params['filter_status'])) {
 			$filter = $params['filter_status'];
-			$this->where ('status',$filter);
+			$query.= " AND `u`.`status` = '" . $filter . "'";
 		} 
 		if(!empty($params['filter_column']) && !empty($params['filter_column_dir'])){
 			$column		= $params['filter_column'];
 			$columnDir	= $params['filter_column_dir'];
-			$this->orderBy($column,$columnDir);
+			$query.= " ORDER BY `u`.`$column` $columnDir";
 		}else{
-			$this->orderBy("id","desc");
+			$query.= " ORDER BY `u`.`id` DESC";
 		}  
-		$result = $this->arraybuilder()->paginate("`$this->table`", $currentPage);
+		
+		$pagination					= $params['pagination'];
+		$totalItemsPerPage	= $pagination['totalItemsPerPage'];
+		if($totalItemsPerPage > 0){
+			$position	= ($pagination['currentPage']-1)*$totalItemsPerPage;
+			$query.= " LIMIT $position, $totalItemsPerPage";
+		}
+		$result = $this->rawQuery($query);
 		return $result;
 	}
 
@@ -74,7 +89,7 @@ class UserModel extends Model{
 		}
 		if(!empty($params['filter_search'])) {
 			$search = $params["filter_search"];
-			$sql .= " AND name LIKE '%$search%'";
+			$sql .= " AND username LIKE '%$search%'";
 		}
 	
 		$count = $this->rawQueryOne ($sql);
@@ -83,6 +98,10 @@ class UserModel extends Model{
 
 	public function countStatus($params) {
 		$sql = "SELECT count(id) as `count`,status FROM `$this->table` WHERE id > 0";
+		if(!empty($params['filter_search'])) {
+			$search = $params["filter_search"];
+			$sql .= " AND username LIKE '%$search%'";
+		}
 		$sql .= " GROUP BY status";
 		$result = $this->rawQuery ($sql);
 		return $result;

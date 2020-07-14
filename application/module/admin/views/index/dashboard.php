@@ -1,7 +1,6 @@
 <div class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
-
       <?php require_once TEMPLATE_PATH.$this->_moduleName . DS .'adminlte/html/dashboard.php';?>
       <div class="col-sm-6">
       <?php require_once TEMPLATE_PATH.$this->_moduleName . DS .'adminlte/html/breadcumb.php';?>

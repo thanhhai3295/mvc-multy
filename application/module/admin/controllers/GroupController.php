@@ -1,6 +1,4 @@
 <?php
-include 'application/module/admin/controllers/AdminController.php';
-
 class GroupController extends AdminController{
 	
 	public function listAction(){
@@ -52,4 +50,15 @@ class GroupController extends AdminController{
 		Session::set('msgSuccess','Delete Item Success!');
 		$this->redirect('admin',$this->nameController,'list');
 	}
+	public function multiDeleteAction(){
+		if(isset($this->_arrParam['multiDelete'])) {
+			$arrID = $this->_arrParam['multiDelete'];
+			$this->_model->multiDeleteUser($arrID);
+			Session::set('msgSuccess','Delete '.count($arrID).' Item Success!');
+			$this->redirect('admin',$this->nameController,'list');
+		} else {
+			Session::set('msgError','Failed To Delete Item');
+			$this->redirect('admin',$this->nameController,'list');
+		}
+	}	
 } 

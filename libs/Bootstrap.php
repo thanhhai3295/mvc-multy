@@ -28,6 +28,7 @@ class Bootstrap{
 			$requestURL	= "$module-$controller-$action";
 
 			$userInfo	= Session::get('user');
+			
 			$logged		= ($userInfo['login'] == true && $userInfo['time'] + TIME_LOGIN >= time());
 			// MODULE ADMIN
 			if($module == 'admin'){
@@ -81,6 +82,9 @@ class Bootstrap{
 	
 	// LOAD EXISTING CONTROLLER
 	private function loadExistingController($filePath, $controllerName){
+		if($this->_params['module'] == 'admin') {
+			require_once MODULE_PATH . $this->_params['module'] . DS . 'controllers' . DS . 'AdminController.php';
+		}
 		require_once $filePath;
 		$this->_controllerObject = new $controllerName($this->_params);
 	}

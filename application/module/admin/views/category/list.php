@@ -13,6 +13,7 @@
   $hiddenColumn    = Helper::cmsInput('hidden','filter_column','id');
   $hiddenColumnDir = Helper::cmsInput('hidden','filter_column_dir',$this->arrParam['filter_column_dir']??'');
   $hiddenPage      = Helper::cmsInput('hidden','filter_page','1');
+  $nameController = $this->arrParam['controller'];
   echo Helper::createTitle($this->_title);
 ?>
 
@@ -25,7 +26,7 @@
         <?php echo $message; ?> <!-- MESSAGE -->
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Table Group</h3>
+            <h3 class="card-title">Data Table <?php echo ucfirst($nameController); ?></h3>
               <?php echo $filter; ?> <!-- FILTER -->
             </div>
             <!-- /.card-header -->
@@ -63,7 +64,7 @@
                         $xhtml .= '<tr>
                                     <td>
                                       <div class="icheck-danger d-inline">
-                                        <input type="checkbox" id="'.$value['id'].'">
+                                      <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'">
                                         <label for="'.$value['id'].'">
                                         </label>
                                       </div>

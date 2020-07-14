@@ -81,6 +81,11 @@ class GroupModel extends Model{
 
 	public function countStatus($params) {
 		$sql = "SELECT count(id) as `count`,status FROM `$this->table` WHERE id > 0";
+		
+		if(!empty($params['filter_search'])) {
+			$search = $params["filter_search"];
+			$sql .= " AND name LIKE '%$search%'";
+		}
 		$sql .= " GROUP BY status";
 		$result = $this->rawQuery ($sql);
 		return $result;

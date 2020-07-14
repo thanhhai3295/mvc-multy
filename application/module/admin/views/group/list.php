@@ -16,7 +16,6 @@
 ?>
 
 <form action="" id="adminForm" method="POST">
-
 <section class="content">
   <div class="container-fluid">
     <div class="row">
@@ -60,7 +59,7 @@
                         $xhtml .= '<tr>
                                     <td>
                                       <div class="icheck-danger d-inline">
-                                        <input type="checkbox" id="'.$value['id'].'">
+                                        <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'">
                                         <label for="'.$value['id'].'">
                                         </label>
                                       </div>

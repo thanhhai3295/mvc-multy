@@ -13,8 +13,14 @@ function filterStatus(status) {
   $('input[name=filter_status]').val(status);
   $('#adminForm').submit();
 }
-
+function filterGroup(){
+	$('#adminForm').submit();
+}
 function submitForm(){
+  $('#adminForm').submit();
+}
+function multiDelete(url){
+  $('#adminForm').attr('action',url);
   $('#adminForm').submit();
 }
 $(document).ready(function() {

@@ -3,12 +3,6 @@
   $action = explode('/',$this->_title);
   $action = trim($action[1]);
   $form = $this->arrParam??'';
-  
-  $arraySelect = [
-    'default' => 'Choose Status',
-    'active'  => 'Active',
-    'inactive'=> 'Inactive'
-  ];
   $arrayForm = [
     [
       'label' => Helper::createLabel('name'),
@@ -20,7 +14,7 @@
     ],
     [
       'label' => Helper::createLabel('status'),
-      'select' => Helper::cmsSelectbox('form[status]','form-control',$arraySelect,$form['status']??'',null,$this->errors['status']??'')
+      'select' => Helper::cmsSelectbox('form[status]','form-control',DEFAULT_STATUS,$form['status']??'',null,$this->errors['status']??'')
     ]
   ];
 

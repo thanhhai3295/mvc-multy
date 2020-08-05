@@ -9,6 +9,10 @@ class BookModel extends Model{
 		$query .= "FROM `$this->table` AS `b` LEFT JOIN `". TBL_CATEGORY . "` AS `c` ON `b`.`category_id` = `c`.`id`";
 		$query .= "WHERE `b`.`id` > 0";
 
+		$category = $params['form']['category'] ?? '';
+		if($category != 'default' && $category != null) {
+			$query .= " AND `c`.`id` = ".$category;
+		}
 		if(!empty($params['filter_search'])) {
 			$search = $params['filter_search'];
 			$query.= " AND `b`.`name` LIKE '%$search%'";

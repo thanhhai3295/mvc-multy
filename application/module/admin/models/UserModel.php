@@ -106,4 +106,14 @@ class UserModel extends Model{
 		$result = $this->rawQuery ($sql);
 		return $result;
 	}
+	public function itemInSelectbox() {
+		$query 	= "SELECT `id`, `name` FROM `" . TBL_GROUP . "`";
+		$result = $this->rawQuery($query);
+		
+		$arr['default'] = "- Select Group -";
+		foreach ($result as $key => $value) {
+			$arr[$value['id']] = $value['name'];
+		}
+		return $arr;
+	}
 }

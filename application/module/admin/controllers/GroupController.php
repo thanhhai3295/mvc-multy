@@ -13,15 +13,14 @@ class GroupController extends AdminController{
 
 	}
 	public function formAction(){
-		$item = [];
 		$this->_view->_title	 = strtoupper($this->nameController).' / ADD';
-		if(isset($this->_arrParam['id'])){
+		if(isset($this->_arrParam['id']) && !isset($this->_arrParam['form']['token'])){
 			$this->_view->_title	 		= strtoupper($this->nameController).' / EDIT';
-			$item	= $this->_model->infoItem($this->_arrParam);
-			if(empty($item)) $this->redirect('admin',$this->nameController,'list');	
+			$this->_arrParam['form']	= $this->_model->infoItem($this->_arrParam);
+			if(empty($this->_arrParam['form'])) $this->redirectList();	
 		}
 		if(isset($this->_arrParam['form']['token'])) {
-			$item = $this->_arrParam['form'];
+
 			$validate = new GroupValidate($this->_arrParam['form']);
 			$this->_arrParam['form'] = $validate->getResult();
 			if($validate->isValid() == false){
@@ -29,36 +28,12 @@ class GroupController extends AdminController{
 			} else {
 				
 				$this->_model->saveItem($this->_arrParam);		
-				Session::set('msgSuccess',isset($this->_arrParam['id']) ? 'Edit User Success!' : 'Add User Success!');
-				$this->redirect('admin',$this->nameController,'list');		
+				Session::set('msgSuccess',isset($this->_arrParam['id']) ? 'Edit '.ucfirst($this->nameController).' Success!' : 'Add '.ucfirst($this->nameController).' Success!');
+				$this->redirectList();		
 			}
 		}
-		$this->_view->arrParam = $item;
+		$this->_view->arrParam = $this->_arrParam['form']??'';
 		$this->_view->render($this->nameController.'/form');
 	}
-	public function statusAction(){
-		$params['id'] = $this->_arrParam['id'];
-		$params['status'] = ($this->_arrParam['status'] == 'active') ? 'inactive' : 'active';
-		$this->_model->changeStatus($params);
-		Session::set('msgSuccess','Change Status Success!');
-		$this->redirect('admin',$this->nameController,'list');
-	}
-
-	public function deleteAction() {
-		$id = $this->_arrParam['id'];
-		$this->_model->deleteItem($id);
-		Session::set('msgSuccess','Delete Item Success!');
-		$this->redirect('admin',$this->nameController,'list');
-	}
-	public function multiDeleteAction(){
-		if(isset($this->_arrParam['multiDelete'])) {
-			$arrID = $this->_arrParam['multiDelete'];
-			$this->_model->multiDeleteUser($arrID);
-			Session::set('msgSuccess','Delete '.count($arrID).' Item Success!');
-			$this->redirect('admin',$this->nameController,'list');
-		} else {
-			Session::set('msgError','Failed To Delete Item');
-			$this->redirect('admin',$this->nameController,'list');
-		}
-	}	
+		
 } 

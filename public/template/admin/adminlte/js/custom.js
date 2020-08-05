@@ -16,12 +16,22 @@ function filterStatus(status) {
 function filterGroup(){
 	$('#adminForm').submit();
 }
+
 function submitForm(){
   $('#adminForm').submit();
 }
 function multiDelete(url){
   $('#adminForm').attr('action',url);
   $('#adminForm').submit();
+}
+let count = 0;
+function chkBox(element) {
+  var num = document.querySelector('span#countMultiDelete');
+  if(element.checked) count++;
+  else count--;
+  if(count != 0) {
+    num.textContent = '('+count+')';
+  } else num.textContent = '';
 }
 $(document).ready(function() {
   $(function () {

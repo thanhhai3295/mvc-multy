@@ -209,7 +209,7 @@ class Helper{
 			
 		}
 		$urlMultiDelete = URL::CreateLink($params['module'],$params['controller'],'multiDelete');
-		$multiDelete = '<a href="#" class="btn btn-outline-danger btn-sm mx-1" onClick="multiDelete(\''.$urlMultiDelete.'\');">Multi Delete</a>';
+		$multiDelete = '<a href="#" class="btn btn-outline-danger btn-sm mx-1" onClick="multiDelete(\''.$urlMultiDelete.'\');">Multi Delete<span id="countMultiDelete"></span></a>';
 		$selectBox = ($selectBox != null) ? $selectBox : '';
 		$xhtml = '<input type="hidden" name="filter_status" value="'.$filterStatus.'" />';
 		$xhtml .= '<div class="card-tools">    
@@ -310,4 +310,10 @@ class Helper{
 		}
 		return $xhtml;
 	}
+	public static function noData($col) {
+		return '<tr><td colspan="'.$col.'" class="p-0">
+						<div class="alert alert-danger alert-dismissible m-0">
+						<h5 class="m-0"><i class="icon fas fa-ban"></i>NO DATA FOUND</h5>
+						</div></td></tr>';
+	} 
 }

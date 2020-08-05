@@ -52,21 +52,20 @@ class IndexController extends Controller{
 		$this->_view->render('index/dashboard');
 	}
 	
-	public function profileAction(){
-		$this->_templateObj->setFolderTemplate('admin/main/');
-		$this->_templateObj->setFileTemplate('index.php');
-		$this->_templateObj->setFileConfig('template.ini');
-		$this->_templateObj->load();
-	
-		$this->_view->_title 		= 'Profile';
-		$userObj	= Session::get('user');
-
-		$this->_view->arrParam['form']	= $userObj['info'];
-		$this->_view->render('index/profile');
-	}
-	
 	public function logoutAction(){
 		Session::delete('user');
 		URL::redirect('admin', 'index', 'login');
+	}
+	public function searchAction() {
+		$this->_templateObj->setFolderTemplate('admin/adminlte/');
+		$this->_templateObj->setFileTemplate('index.php');
+		$this->_templateObj->setFileConfig('template.ini');
+		$this->_templateObj->load();
+		$this->_view->_title 		= 'Search';
+		$this->_view->group = $this->_model->getGroup($this->_arrParam);
+		echo '<pre>';
+		print_r($this->_view->group);
+		echo '</pre>';
+		$this->_view->render('index/search');
 	}
 }

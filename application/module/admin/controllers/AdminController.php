@@ -15,5 +15,33 @@
         Session::set('msgSuccess','search: '.$this->_arrParam['filter_search']);
       }
     }
+    public function statusAction(){
+      $params['id'] = $this->_arrParam['id'];
+      $params['status'] = ($this->_arrParam['status'] == 'active') ? 'inactive' : 'active';
+      $this->_model->changeStatus($params);
+      Session::set('msgSuccess','Change Status Success!');
+      $this->redirect('admin',$this->nameController,'list');
+    }
+  
+    public function deleteAction() {
+      $id = $this->_arrParam['id'];
+      $this->_model->deleteItem($id);
+      Session::set('msgSuccess','Delete Item Success!');
+      $this->redirect('admin',$this->nameController,'list');
+    }
+    public function multiDeleteAction(){
+      if(isset($this->_arrParam['multiDelete'])) {
+        $arrID = $this->_arrParam['multiDelete'];
+        $this->_model->multiDeleteUser($arrID);
+        Session::set('msgSuccess','Delete '.count($arrID).' Item Success!');
+        $this->redirect('admin',$this->nameController,'list');
+      } else {
+        Session::set('msgError','Failed To Delete Item');
+        $this->redirect('admin',$this->nameController,'list');
+      }
+    }
+    public function redirectList(){
+      $this->redirect('admin',$this->nameController,'list');	
+    }
   }
 ?>

@@ -23,4 +23,12 @@ class IndexModel extends Model{
 		}
 		return $result;
 	}
+
+	public function getGroup($params) {
+		$search = $params['search'];
+		$query = "SELECT `id` ,`name` ";
+		$query .= "FROM `".TBL_GROUP."` ";
+		$query .= "WHERE `name` LIKE '%$search%'";
+		return $this->rawQuery($query);
+	}
 }

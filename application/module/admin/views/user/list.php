@@ -15,11 +15,7 @@
   $hiddenPage      = Helper::cmsInput('hidden','filter_page','1');
   $nameController = $this->arrParam['controller'];
 
-  $arraySelectGroup = [
-    'default' => 'Choose Group',
-    '4'  => 'Admin',
-    '5'=> 'Member'
-  ];
+  $arraySelectGroup = $this->arrGroup;
   $selectGroup = Helper::cmsSelectbox('form[group]','form-control',$arraySelectGroup,$this->arrParam['form']['group']??'',null,null,'filterGroup');
   $filter       = Helper::createFilter($this->arrParam,$this->countStatus,$selectGroup);
   echo Helper::createTitle($this->_title);
@@ -73,7 +69,7 @@
                         $xhtml .= '<tr>
                                     <td>
                                       <div class="icheck-danger d-inline">
-                                      <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'">
+                                      <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'" onclick="chkBox(this);">
                                         <label for="'.$value['id'].'">
                                         </label>
                                       </div>
@@ -94,10 +90,7 @@
                                   </tr>';
                       } 
                     } else {
-                      $xhtml = '<tr><td colspan="7" class="p-0">
-                                  <div class="alert alert-danger alert-dismissible m-0">
-                                  <h5 class="m-0"><i class="icon fas fa-ban"></i>NO DATA FOUND</h5>
-                              </div></td></tr>';
+                      $xhtml = Helper::noData(9);
                     }
                     
                   echo $xhtml;

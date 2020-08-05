@@ -3,17 +3,7 @@
   $action = explode('/',$this->_title);
   $action = trim($action[1]);
   $form = $this->arrParam??'';
-  
-  $arraySelectStatus = [
-    'default' => 'Choose Status',
-    'active'  => 'Active',
-    'inactive'=> 'Inactive'
-  ];
-  $arraySelectGroup = [
-    'default' => 'Choose Group',
-    '4'  => 'Admin',
-    '5'=> 'Member'
-  ];
+
   $arrayForm = [
     [
       'label' => Helper::createLabel('username'),
@@ -33,11 +23,11 @@
     ],
     [
       'label' => Helper::createLabel('group'),
-      'select' => Helper::cmsSelectbox('form[group_id]','form-control',$arraySelectGroup,$form['group_id']??'',null,$this->errors['group_id']??'')
+      'select' => Helper::cmsSelectbox('form[group_id]','form-control',DEFAULT_GROUP,$form['group_id']??'',null,$this->errors['group_id']??'')
     ],
     [
       'label' => Helper::createLabel('status'),
-      'select' => Helper::cmsSelectbox('form[status]','form-control',$arraySelectStatus,$form['status']??'',null,$this->errors['status']??'')
+      'select' => Helper::cmsSelectbox('form[status]','form-control',DEFAULT_STATUS,$form['status']??'',null,$this->errors['status']??'')
     ],
     [
       'label' => Helper::createLabel('ordering'),

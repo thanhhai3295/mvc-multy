@@ -64,7 +64,7 @@
                         $xhtml .= '<tr>
                                     <td>
                                       <div class="icheck-danger d-inline">
-                                      <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'">
+                                      <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'" onclick="chkBox(this);">
                                         <label for="'.$value['id'].'">
                                         </label>
                                       </div>
@@ -84,10 +84,7 @@
                                   </tr>';
                       } 
                     } else {
-                      $xhtml = '<tr><td colspan="7" class="p-0">
-                                  <div class="alert alert-danger alert-dismissible m-0">
-                                  <h5 class="m-0"><i class="icon fas fa-ban"></i>NO DATA FOUND</h5>
-                              </div></td></tr>';
+                      $xhtml = Helper::noData(8);
                     }
                     
                   echo $xhtml;

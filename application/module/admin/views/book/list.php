@@ -10,12 +10,15 @@
   $lblOrdering 	= Helper::cmsLinkSort('Ordering', 'ordering', $columnPost, $orderPost);
   $lblStatus  	= Helper::cmsLinkSort('Status', 'status', $columnPost, $orderPost);
   $message      = Helper::createMessage();
-  $filter       = Helper::createFilter($this->arrParam,$this->countStatus);
+  $arrCategory = $this->slbCategory;
+  $selectCategory = Helper::cmsSelectbox('form[category]','form-control',$arrCategory,$this->arrParam['form']['category']??'',null,null,'submitForm');
+  $filter       = Helper::createFilter($this->arrParam,$this->countStatus,$selectCategory);
   $pagination   = $this->pagination->showPagination(true);
   $hiddenColumn    = Helper::cmsInput('hidden','filter_column','id');
   $hiddenColumnDir = Helper::cmsInput('hidden','filter_column_dir',$this->arrParam['filter_column_dir']??'');
   $hiddenPage      = Helper::cmsInput('hidden','filter_page','1');
   $nameController = $this->arrParam['controller'];
+  
   echo Helper::createTitle($this->_title);
 ?>
 
@@ -69,7 +72,7 @@
                         $xhtml .= '<tr>
                                     <td>
                                       <div class="icheck-danger d-inline">
-                                      <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'">
+                                      <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'" onclick="chkBox(this);">
                                         <label for="'.$value['id'].'">
                                         </label>
                                       </div>
@@ -91,10 +94,7 @@
                                   </tr>';
                       } 
                     } else {
-                      $xhtml = '<tr><td colspan="7" class="p-0">
-                                  <div class="alert alert-danger alert-dismissible m-0">
-                                  <h5 class="m-0"><i class="icon fas fa-ban"></i>NO DATA FOUND</h5>
-                              </div></td></tr>';
+                      $xhtml = Helper::noData(10);
                     }
                     
                   echo $xhtml;

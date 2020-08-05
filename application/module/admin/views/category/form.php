@@ -6,18 +6,13 @@
   $picture = '';
   $inputPictureHidden = '';
   if(isset($_GET['id'])) {
-    $picture	= '<img src="'.UPLOAD_URL . 'category' . DS . '60x90-' . $form['picture'].'">';
+    $picture 	= Helper::createImage('category', '60x90-', $form['picture'],['width' => '60','height' => '90']);
     $inputPictureHidden	= Helper::cmsInput('hidden', 'form[picture_hidden]', $form['picture'], 'inputbox', 40);
     if (empty($this->arrParam['picture'])) {
       $picture	= '';
     }
   }
-  
-  $arraySelect = [
-    'default' => 'Choose Status',
-    'active'  => 'Active',
-    'inactive'=> 'Inactive'
-  ];
+
   $arrayForm = [
     [
       'label' => Helper::createLabel('name'),
@@ -29,7 +24,7 @@
     ],
     [
       'label' => Helper::createLabel('status'),
-      'select' => Helper::cmsSelectbox('form[status]','form-control',$arraySelect,$form['status']??'',null,$this->errors['status']??'')
+      'select' => Helper::cmsSelectbox('form[status]','form-control',DEFAULT_STATUS,$form['status']??'',null,$this->errors['status']??'')
     ],
     [
       'label' => Helper::createLabel('picture'),

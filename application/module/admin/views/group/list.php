@@ -59,7 +59,7 @@
                         $xhtml .= '<tr>
                                     <td>
                                       <div class="icheck-danger d-inline">
-                                        <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'">
+                                        <input type="checkbox" id="'.$value['id'].'" name="multiDelete[]" value="'.$value['id'].'" onclick="chkBox(this);">
                                         <label for="'.$value['id'].'">
                                         </label>
                                       </div>

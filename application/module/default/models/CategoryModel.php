@@ -10,6 +10,14 @@ class CategoryModel extends Model{
 	
 		$this->pageLimit   = $totalItemsPerPage;
 		$this->where('status','active');
+		if(isset($params['filter'])) {
+			if($params['filter'] != 'new') {
+				$this->orderBy($params['filter'],'desc');
+			} else {
+				$this->orderBy('id','desc');
+			}
+		}
+		$this->orderBy('id','desc');
 		$result = $this->arraybuilder()->paginate("`$this->table`", $currentPage);
 
 		return $result;

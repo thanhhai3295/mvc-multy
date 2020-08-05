@@ -1,10 +1,10 @@
 <?php 
-    $pagination = $this->pagination->showPagination(true);
+  $pagination = $this->pagination->showPagination(true);
+  $hiddenPage = Helper::cmsInput('hidden','filter_page','1');
 ?>
 <div class="tab-content">
   <div class="tab-pane active" id="th">
     <div class="row">
-      
         <?php 
           $xhtml = '';
           if (!empty($this->items)) {
@@ -27,19 +27,20 @@
             echo $xhtml;
           }
         ?>  
+      </form>
       </div>
+      
     </div>
   </div>
 </div>
 
-<div class="pagination-area mt-50">
-  <div class="page-number">
-    <ul>
-      <li><a href="#" class="active">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#" class="angle"><i class="fa fa-angle-right"></i></a></li>
-    </ul>
-  </div>
 </div>
+<div class="pagination-area">
+    <div style="float:right">
+      <?php echo $pagination; ?>
+    </div>
+</div>
+
+<form action="" id="adminForm" method="POST">
+  <?php echo $hiddenPage; ?>
+</form>

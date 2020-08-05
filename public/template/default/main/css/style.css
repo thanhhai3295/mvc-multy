@@ -3703,13 +3703,7 @@ nav.menu .cr-dropdown ul {
 .left-menu ul li a:hover {
     color: #f07c29;
 }
-.left-menu ul li a:before {
-    content: "?";
-    display: inline-block;
-    font-family: "FontAwesome";
-    font-size: 16px;
-    margin-right: 20px;
-}
+
 .left-menu ul li a span {
     color: #333;
     display: inline-block;

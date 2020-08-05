@@ -5,9 +5,9 @@
         <div class="menu-area">
           <nav>
             <ul>
-              <li class="active"><a href="index.html">Home<i class="fa fa-angle-down"></i></a>
+              <li><a href="index.html">Home<i class="fa fa-angle-down"></i></a>
               </li>
-              <li><a href="product-details.html">Book<i class="fa fa-angle-down"></i></a>
+              <li><a href="product-details.html">Category<i class="fa fa-angle-down"></i></a>
               </li>
             </ul>
           </nav>

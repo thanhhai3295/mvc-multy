@@ -1,14 +1,10 @@
 <?php
-class BookController extends Controller{
+class BookController extends DefaultController{
 	public function __construct($arrParams){
 		parent::__construct($arrParams);
 		session::init();
 	}
 	public function listAction(){
-		$this->_templateObj->setFolderTemplate('default/main/');
-		$this->_templateObj->setFileTemplate('index.php');
-		$this->_templateObj->setFileConfig('template.ini');
-		$this->_templateObj->load();
 		$this->_view->_title	 = 'BOOk / LIST';
 		$totalItems						 = $this->_model->countItem($this->_arrParam);
 		$configPagination 		 = array('totalItemsPerPage'	=> 4, 'pageRange' => 3);

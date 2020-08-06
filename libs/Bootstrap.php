@@ -85,6 +85,9 @@ class Bootstrap{
 		if($this->_params['module'] == 'admin') {
 			require_once MODULE_PATH . $this->_params['module'] . DS . 'controllers' . DS . 'AdminController.php';
 		}
+		if($this->_params['module'] == 'default') {
+			require_once MODULE_PATH . $this->_params['module'] . DS . 'controllers' . DS . 'DefaultController.php';
+		}
 		require_once $filePath;
 		$this->_controllerObject = new $controllerName($this->_params);
 	}

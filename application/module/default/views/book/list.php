@@ -1,7 +1,6 @@
 <?php 
   $pagination = $this->pagination->showPagination(true);
   $hiddenPage = Helper::cmsInput('hidden','filter_page','1');
-
 ?>
 <div class="section-title-5 mb-30">
   <h2><?php echo $this->_title ?></h2>
@@ -9,7 +8,7 @@
 <div class="toolbar mb-30">
   <div class="shop-tab">
     <div class="tab-3">
-      <h3>...</h3>
+      <h3><?php echo $this->categoryName['name'] ?></h3>
     </div>
 
   </div>
@@ -18,7 +17,6 @@
     <?php include_once BLOCK_PATH . 'sort.php';?>
   </div>
 </div>
-
 <div class="tab-content">
   <div class="tab-pane active" id="th">
     <div class="row">
@@ -28,21 +26,20 @@
             foreach ($this->items as $key => $value) {
               $link    = URL::createLink('default','book','list',['catID' => $value['id']]);
               $name    = $value['name'];
-              $picture = Helper::createImage('category', '', $value['picture']);
-              $xhtml .= '<div class="col-lg-3 col-md-4 col-sm-6">
-                          <div class="product-wrapper mb-40 hidden-md hidden-sm">
-                            <div class="product-img">
-                                <a href="'.$link.'">
-                                    '.$picture.'
-                                </a>                                               
+              $description = substr($value['description'],0,350).'...';
+              $picture = Helper::createImage('book', '', $value['picture']);
+              $xhtml .= '<div class="card" style="max-width: 540px;margin-bottom:20px;">
+                          <div class="row no-gutters">
+                            <div class="col-md-4">'.$picture.'</div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <h5 class="card-title">'.$name.'</h5>
+                                <p class="card-text">'.$description.'</p>
+                              </div>
                             </div>
-                            <div class="product-details text-center">                               
-                                <h4><a href="'.$link.'">'.$name.'</a></h4>                                 
-                            </div>	
                           </div>
-                        </div>';
+                        </div><hr>';
             }
-           
           } else {
             $xhtml .= '<h4 style="color:red;font-weight:bold"> No Data</h4>';
           }
@@ -53,8 +50,7 @@
   </div>
 </div>
 
-
-<div class="pagination-area">
+<div class="pagination-area" style="border:none">
     <div style="float:right">
       <?php echo $pagination; ?>
     </div>

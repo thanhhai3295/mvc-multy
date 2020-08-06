@@ -23,10 +23,7 @@
 						<div class="category-image mb-30">
 							<a href="#"><img src="public/template/default/main/img/banner/32.jpg" alt="banner" /></a>
 						</div>
-						<div class="section-title-5 mb-30">
-							<h2>Book</h2>
-						</div>
-						<?php include 'html/toolbar.php' ?>
+						
 						<!-- tab-area-start -->
 						<?php
     					require_once MODULE_PATH. $this->_moduleName . DS . 'views' . DS .  $this->_fileView . '.php';

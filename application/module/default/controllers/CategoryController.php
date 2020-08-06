@@ -5,7 +5,7 @@ class CategoryController extends DefaultController{
 		session::init();
 	}
 	public function listAction(){
-		$this->_view->_title	 = 'Category / List';
+		$this->_view->_title	 = strtoupper($this->nameController).' / LIST';
 		$totalItems						 = $this->_model->countItem($this->_arrParam);
 		$configPagination 		 = array('totalItemsPerPage'	=> 8, 'pageRange' => 3);
 		$this->setPagination($configPagination);

@@ -18,4 +18,16 @@
       </div>	
     </div>
   </div>
+
+  <div class="left-title mb-20">
+    <h4>Specials</h4>
+  </div>
+  <div class="random-area mb-30">
+    <div class="product-active-2 owl-carousel">
+      <div class="product-total-2">
+        <?php include_once BLOCK_PATH . 'specials.php';?>
+      </div>	
+    </div>
+  </div>
+
 </div>

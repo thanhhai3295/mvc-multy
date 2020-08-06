@@ -5,16 +5,16 @@
   $xhtml = '';
   if (!empty($this->featureBook)) {
     foreach ($this->featureBook as $key => $value) {
-      $link    = URL::createLink('default','book','list',['catID' => $value['id']]);
+      $link    = URL::createLink('default','book','detail',['bookID' => $value['id']]);
       $name    = $value['name'];
-      $description = Helper::cutString($value['description'],200).'...';
+      $description = Helper::cutString($value['description'],200);
       $picture = Helper::createImage('book', '', $value['picture']);
       $xhtml .= '<div class="card" style="max-width: 540px;margin-bottom:20px;">
                   <div class="row no-gutters">
-                    <div class="col-md-4">'.$picture.'</div>
+                    <div class="col-md-4"><a href="'.$link.'">'.$picture.'</a></div>
                     <div class="col-md-8">
                       <div class="card-body">
-                        <h5 class="card-title">'.$name.'</h5>
+                        <h5 class="card-title"><a href="'.$link.'">'.$name.'</a></h5>
                         <p class="card-text">'.$description.'</p>
                       </div>
                     </div>
@@ -33,16 +33,16 @@
   $xhtml = '';
   if (!empty($this->newBook)) {
     foreach ($this->newBook as $key => $value) {
-      $link    = URL::createLink('default','book','list',['catID' => $value['id']]);
+      $link    = URL::createLink('default','book','detail',['bookID' => $value['id']]);
       $name    = $value['name'];
-      $picture = Helper::createImage('book', '', $value['picture']);
+      $picture = Helper::createImage('book', '98x150-', $value['picture']);
       $xhtml .= '
                   <div class="col-md-4">
                     <div class="card relative overflow" style="width: 18rem;">
-                    '.$picture.'
+                    <a href="'.$link.'">'.$picture.'</a>
                     <span class="new">NEW</span>
                     <div class="card-body" style="margin-top:1rem;">
-                    <h5 class="card-title">'.$name.'</h5>
+                    <h5 class="card-title"><a href="'.$link.'">'.$name.'</a></h5>
                     </div>
                     </div>
                   </div>';

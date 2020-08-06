@@ -1,6 +1,6 @@
 <?php 
   
-  $sql = "SELECT id,name,picture,sale_off,price FROM ".TBL_BOOK." WHERE sale_off > 0";
+  $sql = "SELECT id,name,picture FROM ".TBL_BOOK." WHERE special = 1";
   $result = $db->rawQuery($sql);
   $randomArray = array_rand($result, 2);
   $xhtml = '';
@@ -8,23 +8,22 @@
     $link = URL::createLink('default','book','detail',['bookID' => $result[$value]['id']]);
     $name    = $result[$value]['name'];
     $picture = Helper::createImage('book', '', $result[$value]['picture']);
-    $price = $result[$value]['price'];
-    $sale = $result[$value]['sale_off'];
-    $sale_off = '<div class="product-price">
-                  <ul>
-                    <li>'.number_format((100-$sale)*$price/100).'đ</li>
-                    <li class="old-price">'.number_format($price).'đ</li>
-                  </ul>
-                </div>';
-
     $xhtml .= '<div class="single-most-product bd mb-18">
                   <div class="most-product-img relative">
                     <a href="'.$link.'">'.$picture.'</a>
-                    <span class="sale-off">&nbsp;&nbsp;Sale Off</span>
+                    <span class="specials">&nbsp;&nbsp;Specials</span>
                   </div>
                   <div class="most-product-content">
                   <h4><a href="'.$link.'">'.$name.'</a></h4>
-                  '.$sale_off.'
+                  <div class="product-rating">
+                    <ul>
+                      <li><a href="#"><i class="fa fa-star"></i></a></li>
+                      <li><a href="#"><i class="fa fa-star"></i></a></li>
+                      <li><a href="#"><i class="fa fa-star"></i></a></li>
+                      <li><a href="#"><i class="fa fa-star"></i></a></li>
+                      <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                  </div>
                   </div>
                 </div>';
   }

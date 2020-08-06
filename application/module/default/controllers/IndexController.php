@@ -10,4 +10,5 @@ class IndexController extends DefaultController{
 		$this->_view->newBook = $this->_model->newBook($this->_arrParam);
 		$this->_view->render('index/index');
 	}
+
 } 

@@ -31,8 +31,22 @@ class BookModel extends Model{
 		$count = $this->rawQueryOne ($query);
 		return $count['count(id)'];
 	}
-	public function infoItem($params) {
+	public function categoryName($params) {
 		$query	= "SELECT `name` FROM `".TBL_CATEGORY."` WHERE `id` = '" . $params['catID'] . "'";
 		return $this->rawQueryOne($query);
+	}
+	public function bookInfo($params) {
+		$query	= "SELECT `b`.`id`, `b`.`name`, `c`.`name` AS `category_name`, `b`.`price`, `b`.`sale_off`, `b`.`picture`, `b`.`description`, `b`.`category_id` FROM `".TBL_BOOK."` AS `b`, `".TBL_CATEGORY."` AS `c` WHERE `b`.`id` = '" . $params['bookID'] . "' AND `c`.`id` = `b`.`category_id`";
+		return $this->rawQueryOne($query);
+	}
+	public function bookRelate($params) {
+		$bookID		= $params['bookID'];
+		$id  = $this->rawQueryOne('select category_id from '.TBL_BOOK.' where id ='.$bookID);
+		$catID = $id['category_id'];
+		$query	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`, `b`.`category_id`, `c`.`name` AS `category_name` ";
+		$query	.= "FROM `".TBL_BOOK."` AS `b`, `".TBL_CATEGORY."` AS `c` ";
+		$query	.= "WHERE `b`.`status`  = 'active'  AND `c`.`id` = `b`.`category_id` AND `b`.`id` <> '$bookID' AND `c`.`id`  = '$catID' ";
+		$query .= "ORDER BY `b`.`ordering` ASC";
+		return $this->rawQuery($query);
 	}
 }

@@ -317,7 +317,12 @@ class Helper{
 						</div></td></tr>';
 	} 
 	public static function cutString($string, $whitespace) {
-		$index = strpos($string,' ',$whitespace);
-		return substr($string,0,$index);
+		if(strlen($string) < $whitespace) {
+			return $string;
+		} else {
+			$index = strpos($string,' ',$whitespace);
+			if($index == null) return $string; 
+			else return substr($string,0,$index).'...';
+		}
 	}
 }

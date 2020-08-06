@@ -26,7 +26,7 @@
             foreach ($this->items as $key => $value) {
               $link    = URL::createLink('default','book','list',['catID' => $value['id']]);
               $name    = $value['name'];
-              $description = substr($value['description'],0,350).'...';
+              $description = Helper::cutString($value['description'],200).'...';
               $picture = Helper::createImage('book', '', $value['picture']);
               $xhtml .= '<div class="card" style="max-width: 540px;margin-bottom:20px;">
                           <div class="row no-gutters">

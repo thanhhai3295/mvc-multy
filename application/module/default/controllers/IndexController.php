@@ -4,18 +4,14 @@ class IndexController extends Controller{
 		parent::__construct($arrParams);
 		session::init();
 	}
-	public function listAction(){
+	public function IndexAction(){
 		$this->_templateObj->setFolderTemplate('default/main/');
 		$this->_templateObj->setFileTemplate('index.php');
 		$this->_templateObj->setFileConfig('template.ini');
 		$this->_templateObj->load();
-		$this->_view->_title	 = strtoupper('category').' / LIST';
-		// $totalItems						 = $this->_model->countItem($this->_arrParam);
-		// $configPagination 		 = array('totalItemsPerPage'	=> 4, 'pageRange' => 3);
-		// $this->setPagination($configPagination);
-		// $this->_view->pagination	= new Pagination($totalItems, $this->_pagination);
-		// $this->_view->items			  = $this->_model->listItems($this->_arrParam);
-		// $this->_view->countStatus = $this->_model->countStatus($this->_arrParam);
-		$this->_view->render('category/list');
+		$this->_view->_title	 = 'HOME';
+		$this->_view->featureBook = $this->_model->featureBook($this->_arrParam);
+		$this->_view->newBook = $this->_model->newBook($this->_arrParam);
+		$this->_view->render('index/index');
 	}
 } 

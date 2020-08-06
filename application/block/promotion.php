@@ -1,15 +1,16 @@
 <?php 
   $db = new Model();
-  $sql = "SELECT name,picture FROM ".TBL_CATEGORY;
+  $sql = "SELECT name,picture FROM ".TBL_BOOK." WHERE sale_off > 0";
   $result = $db->rawQuery($sql);
   $randomArray = array_rand($result, 4);
   $xhtml = '';
   foreach ($randomArray as $key => $value) {
     $name    = $result[$value]['name'];
-    $picture = Helper::createImage('category', '', $result[$value]['picture']);
+    $picture = Helper::createImage('book', '', $result[$value]['picture']);
     $xhtml .= '<div class="single-most-product bd mb-18">
-                  <div class="most-product-img">
+                  <div class="most-product-img relative">
                     <a href="#">'.$picture.'</a>
+                    <span class="sale-off">&nbsp;&nbsp;Sale Off</span>
                   </div>
                   <div class="most-product-content">
                   <h4><a href="#">'.$name.'</a></h4>

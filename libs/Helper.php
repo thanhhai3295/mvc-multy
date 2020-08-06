@@ -316,4 +316,8 @@ class Helper{
 						<h5 class="m-0"><i class="icon fas fa-ban"></i>NO DATA FOUND</h5>
 						</div></td></tr>';
 	} 
+	public static function cutString($string, $whitespace) {
+		$index = strpos($string,' ',$whitespace);
+		return substr($string,0,$index);
+	}
 }

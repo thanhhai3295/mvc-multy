@@ -9,12 +9,12 @@
     <?php include_once BLOCK_PATH . 'category.php';?>
   </div>
   <div class="left-title mb-20">
-    <h4>Random</h4>
+    <h4>Promotion</h4>
   </div>
   <div class="random-area mb-30">
     <div class="product-active-2 owl-carousel">
       <div class="product-total-2">
-        <?php include_once BLOCK_PATH . 'random.php';?>
+        <?php include_once BLOCK_PATH . 'promotion.php';?>
       </div>	
     </div>
   </div>

@@ -40,7 +40,11 @@
                   <div class="col-md-4">
                     <div class="card relative overflow" style="width: 18rem;">
                     <a href="'.$link.'">'.$picture.'</a>
-                    <span class="new">NEW</span>
+                    <div class="product-flag">
+                      <ul>
+                          <li><span class="sale">new</span></li>
+                      </ul>
+                    </div>
                     <div class="card-body" style="margin-top:1rem;">
                     <h5 class="card-title"><a href="'.$link.'">'.$name.'</a></h5>
                     </div>

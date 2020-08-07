@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2020 at 12:41 AM
+-- Generation Time: Aug 06, 2020 at 06:07 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -61,9 +61,8 @@ INSERT INTO `book` (`id`, `name`, `description`, `price`, `special`, `sale_off`,
 (20, 'Programming Drupal 7 Entities', 'Writing code for manipulating Drupal data has never been easier! Learn to dice and serve your data as you slowly peel back the layers of the Drupal entity onion. Next, expose your legacy local and remote data to take full advantage of Drupal\'s vast solution space.\r\n\r\nProgramming Drupal 7 Entities is a practical, hands-on guide that provides you with a thorough knowledge of Drupal\'s entity paradigm and a number of clear step-by-step exercises, which will help you take advantage of the real power that is available when developing using entities.', '58000', 0, 4, 'zosatu07.jpg', '2013-12-12', 'admin', '2013-12-12', 'admin', 'active', 3, 2),
 (21, 'Moving from C to C++', 'The author says it best, I hope to move you, a little at a time,from understanding C to the point where C++ becomes your mindset. This remarkable book is designed to streamline the process of learning C++ in a way that discusses programming problems, why they exist, and the approach C++ has taken to solve such problems.\r\n\r\nYou can\'t just look at C++ as a collection of features; some of the features make no sense in isolation. You can only use the sum of the parts if you are thinking about design, not simply coding. To understand C++, you must understand the problems with C and with programming in general. This book discusses programming problems, why they are problems, and the approach C++ has taken to solve such problems. Thus, the set of features that I explain in each chapter will be based on the way that I see a particular type of problem being solved in C++.', '36000', 0, 3, '901wh8tx.jpg', '2013-12-12', 'admin', '2013-12-12', 'admin', 'active', 3, 2),
 (22, 'C Programming for Arduino', 'Physical computing allows us to build interactive physical systems by using software & hardware in order to sense and respond to the real world. C Programming for Arduino will show you how to harness powerful capabilities like sensing, feedbacks, programming and even wiring and developing your own autonomous systems.\r\n\r\nC Programming for Arduino contains everything you need to directly start wiring and coding your own electronic project. You\'ll learn C and how to code several types of firmware for your Arduino, and then move on to design small typical systems to understand how handling buttons, leds, LCD, network modules and much more.', '38000', 0, 0, 'siochmyg.jpg', '2013-12-12', 'admin', '2013-12-13', 'admin', 'active', 2, 3),
-(23, 'Advanced Network Programming - Principles and Techniques', 'The field of network programming is so large, and developing so rapidly, that it can appear almost overwhelming to those new to the discipline.\r\n\r\nAnswering the need for an accessible overview of the field, this text/reference presents a manageable introduction to both the theoretical and practical aspects of computer networks and network programming. Clearly structured and easy to follow, the book describes cutting-edge developments in network architectures, communication protocols, and programming techniques and models, supported by code examples for hands-on practice with creating network-based applications.', '43000', 1, 20, 'vradhky9.jpg', '2013-12-12', 'admin', '2013-12-13', 'admin', 'active', 3, 3),
-(24, 'Programming Logics', 'This Festschrift volume, published in memory of Harald Ganzinger, contains 17 papers from colleagues all over the world and covers all the fields to which Harald Ganzinger dedicated his work during his academic career.\r\n\r\nThe volume begins with a complete account of Harald Ganzinger\'s work and then turns its focus to the research of his former colleagues, students, and friends who pay tribute to him through their writing. Their individual papers span a broad range of topics, including programming language semantics, analysis and verification, first-order and higher-order theorem proving, unification theory, non-classical logics, reasoning modulo theories, and applications of automated reasoning in biology.', '32000', 0, 1, 'sbx52yne.jpg', '2013-12-12', 'admin', '2013-12-12', 'admin', 'inactive', 2, 4),
-(28, 'no picture', '', '123', 0, 12, NULL, '2020-07-06', NULL, '0000-00-00', NULL, 'active', 1, 1);
+(23, 'Advanced Network Programming - Principles and Techniques', 'The field of network programming is so large, and developing so rapidly, that it can appear almost overwhelming to those new to the discipline.\r\n\r\nAnswering the need for an accessible overview of the field, this text/reference presents a manageable introduction to both the theoretical and practical aspects of computer networks and network programming. Clearly structured and easy to follow, the book describes cutting-edge developments in network architectures, communication protocols, and programming techniques and models, supported by code examples for hands-on practice with creating network-based applications.', '43000', 1, 20, 'vradhky9.jpg', '2013-12-12', 'admin', '2020-07-15', 'admin', 'active', 3, 3),
+(24, 'Programming Logics', 'This Festschrift volume, published in memory of Harald Ganzinger, contains 17 papers from colleagues all over the world and covers all the fields to which Harald Ganzinger dedicated his work during his academic career.\r\n\r\nThe volume begins with a complete account of Harald Ganzinger\'s work and then turns its focus to the research of his former colleagues, students, and friends who pay tribute to him through their writing. Their individual papers span a broad range of topics, including programming language semantics, analysis and verification, first-order and higher-order theorem proving, unification theory, non-classical logics, reasoning modulo theories, and applications of automated reasoning in biology.', '32000', 0, 1, 'sbx52yne.jpg', '2020-08-05', 'admin', '2020-07-15', 'admin', 'inactive', 2, 4);
 
 -- --------------------------------------------------------
 
@@ -116,7 +115,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `picture`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`) VALUES
-(1, 'Văn Học - Tiểu Thuyết', 'hft8q1c3.jpg', '2013-12-09', 'admin', '2013-12-09', 'admin', 'inactive', 10),
+(1, 'Văn Học - Tiểu Thuyết', 'hft8q1c3.jpg', '2013-12-09', 'admin', '2013-12-09', 'admin', 'active', 10),
 (2, 'Kinh Tế', '3snfyg8u.jpg', '2013-12-09', 'admin', '2013-12-21', 'admin', 'active', 4),
 (3, 'Tin học', 'zahorwby.jpg', '2013-12-09', 'admin', '2013-12-09', 'admin', 'active', 10),
 (4, ' Kỹ Năng Sống', 'bntdur5l.jpg', '2013-12-09', 'admin', '2013-12-09', 'admin', 'active', 1),
@@ -124,7 +123,7 @@ INSERT INTO `category` (`id`, `name`, `picture`, `created`, `created_by`, `modif
 (6, ' Thường Thức - Đời Sống', 'tv8basyz.jpg', '2013-12-09', 'admin', '2013-12-09', 'admin', 'active', 2),
 (7, 'Ngoại Ngữ - Từ Điển', 'zruvqadp.jpg', '2013-12-09', 'admin', '2013-12-09', 'admin', 'active', 5),
 (8, 'Truyện Tranh', '5hd9kq6s.jpeg', '2013-12-09', 'admin', '2013-12-09', 'admin', 'active', 10),
-(9, ' Văn Hoá - Nghệ Thuật', 'btkjrfal.jpg', '2013-12-06', 'admin', '2013-12-21', 'admin', 'inactive', 3);
+(9, ' Văn Hoá - Nghệ Thuật', 'btkjrfal.jpg', '2013-12-06', 'admin', '2013-12-21', 'admin', 'active', 3);
 
 -- --------------------------------------------------------
 
@@ -151,8 +150,8 @@ CREATE TABLE `group` (
 --
 
 INSERT INTO `group` (`id`, `name`, `group_acp`, `created`, `created_by`, `modified`, `modified_by`, `status`, `ordering`, `privilege_id`, `picture`) VALUES
-(4, 'admin', 1, '2020-07-09', '1', '2020-07-08', '2', 'inactive', 10, '1,2,3,4,5,6,7,8,9,10', NULL),
-(5, 'member', 0, '2020-07-09', '1', '2020-07-08', '2', 'active', 1, NULL, NULL);
+(4, 'admin', 1, '2020-07-09', '1', '2020-07-08', '2', 'active', 10, '1,2,3,4,5,6,7,8,9,10', NULL),
+(5, 'member', 0, '2020-07-09', '1', '2020-07-11', 'admin', 'inactive', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -215,14 +214,14 @@ INSERT INTO `user` (`id`, `username`, `email`, `fullname`, `password`, `created`
 (1, 'nvan', 'nvan@gmail.com', 'Nguyễn Văn An', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00', '1', '0000-00-00', NULL, '0000-00-00 00:00:00', NULL, 'active', 4, 1),
 (2, 'nvb', 'nvb@gmail.com', 'Nguyễn Văn B', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00', '1', '0000-00-00', NULL, '0000-00-00 00:00:00', NULL, 'active', 3, 2),
 (3, 'nvc', 'nvc@gmail.com', 'Nguyễn Văn C', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00', '1', '0000-00-00', NULL, '0000-00-00 00:00:00', NULL, 'active', 2, 3),
-(4, 'admin', 'admin@gmail.com', 'Admin', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00', '1', '0000-00-00', NULL, '0000-00-00 00:00:00', NULL, 'active', 1, 4),
+(4, 'admin', 'admin@gmail.com', 'Admin', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00', '1', '2020-07-11', 'admin', '0000-00-00 00:00:00', NULL, 'active', 1, 4),
 (5, 'nguyenvana1', 'lthlan54@gmail.com', 'Admin 3', '3b269d99b6c31f1467421bbcfdec7908', '0000-00-00', NULL, '0000-00-00', NULL, '2013-11-19 18:11:45', '127.0.0.1', 'active', 10, 0),
 (6, 'nguyenvana2', 'lthlan55@gmail.com', 'Admin 3', '3b269d99b6c31f1467421bbcfdec7908', '0000-00-00', NULL, '0000-00-00', NULL, '2013-11-19 18:11:09', '127.0.0.1', 'inactive', 10, 0),
 (7, 'nguyenvana4', 'lthlan56@gmail.com', '', '3b269d99b6c31f1467421bbcfdec7908', '0000-00-00', NULL, '0000-00-00', NULL, '2013-11-19 18:11:08', '127.0.0.1', 'inactive', 10, 0),
-(8, 'nguyenvana1222222', 'lthlan541@gmail.com', 'Admin 3', '3b269d99b6c31f1467421bbcfdec7908', '2020-07-05', NULL, '2013-12-02', '4', '2013-11-19 18:11:06', '127.0.0.1', 'inactive', 12, 4),
-(9, 'nguyenvana122', 'lthlan5412@gmail.com', '', '3b269d99b6c31f1467421bbcfdec7908', '2013-12-02', '4', '2013-12-02', '4', '0000-00-00 00:00:00', NULL, 'inactive', 1, 3),
+(8, 'nguyenvana11122', 'lthlan541@gmail.com', 'Admin 3', '3b269d99b6c31f1467421bbcfdec7908', '2020-07-12', NULL, '2013-12-02', '4', '2013-11-19 18:11:06', '127.0.0.1', 'inactive', 12, 4),
+(9, 'nguyenvana122', 'lthlan5412@gmail.com', '', '3b269d99b6c31f1467421bbcfdec7908', '2013-12-02', '4', '2013-12-02', '4', '0000-00-00 00:00:00', NULL, 'active', 1, 5),
 (10, 'admin01', 'admin01@gmail.com', 'Admin 123', 'e5c0fe73b84c06f43393b87a9c6acaa1', '0000-00-00', NULL, '2013-12-07', 'admin', '2013-12-03 08:12:23', '127.0.0.1', 'inactive', 10, 2),
-(12, 'admin', 'admin@gmail.com', 'admin', '123456', '2020-07-03', NULL, '0000-00-00', NULL, '0000-00-00 00:00:00', NULL, 'active', 2, 4);
+(12, 'admin', 'admin@gmail.com', 'admin', '123456', '2020-07-03', NULL, '0000-00-00', NULL, '0000-00-00 00:00:00', NULL, 'inactive', 2, 4);
 
 --
 -- Indexes for dumped tables
@@ -272,7 +271,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -284,7 +283,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `group`
 --
 ALTER TABLE `group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `privilege`

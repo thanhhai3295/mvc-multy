@@ -20,7 +20,11 @@
     $xhtml .= '<div class="single-most-product bd mb-18">
                   <div class="most-product-img relative">
                     <a href="'.$link.'">'.$picture.'</a>
-                    <span class="sale-off">&nbsp;&nbsp;Sale Off</span>
+                    <div class="product-flag">
+                      <ul>
+                        <li><span class="discount-percentage">-'.$sale.'%</span></li>
+                      </ul>
+                    </div>
                   </div>
                   <div class="most-product-content">
                   <h4><a href="'.$link.'">'.$name.'</a></h4>

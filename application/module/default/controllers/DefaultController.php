@@ -9,6 +9,8 @@
       $this->nameController = $this->_arrParam['controller'];
       Session::init();
     }
-   
+    public function redirect404(){
+      header('location: 404.html');
+    }
   }
 ?>

@@ -2,7 +2,14 @@
   $db = new Model();
   $sql = "SELECT id,name FROM ".TBL_CATEGORY;
   $result = $db->rawQuery($sql);
-  $catID = $_GET['catID']??'';
+  if(isset($_GET['bookID'])) {
+    $sql = "SELECT category_id FROM ".TBL_BOOK." WHERE id=".$_GET['bookID'];
+    $id  = $db->rawQueryOne($sql);
+    $catID = $id['category_id'];
+  } else {
+    $catID = $_GET['catID']??'';
+  }
+  
   $xhtml = '';
   foreach ($result as $key => $value) {
     $active = '';

@@ -17,6 +17,9 @@ class BookController extends DefaultController{
 	public function detailAction(){
 		$this->_view->_title	 = strtoupper($this->nameController).' / DETAIL';
 		$this->_view->bookInfo 		= $this->_model->bookInfo($this->_arrParam);
+		if(empty($this->_view->bookInfo)) {
+			$this->redirect404();
+		}
 		$this->_view->bookRelate	= $this->_model->bookRelate($this->_arrParam);
 		$this->_view->render('book/detail');
 	}

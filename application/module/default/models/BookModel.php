@@ -9,7 +9,17 @@ class BookModel extends Model{
 		$query	= "SELECT `id`, `name`, `picture`, `description`, `category_id`";
 		$query	.= "FROM `$this->table`";
 		$query	.= "WHERE `status`  = 'active' AND `category_id` = '$catID'";
-		$query	.= " ORDER BY `ordering` ASC";
+
+		if(isset($params['filter'])) {
+			if($params['filter'] != 'new') {
+				$filter = $params['filter'];
+				$query .= "ORDER BY ".$filter." DESC ";
+			} else {
+				$query .= "ORDER BY ID DESC ";
+			}
+		} else {
+			$query .= "ORDER BY ID DESC ";
+		}
 		
 		
 		$pagination					= $params['pagination'];

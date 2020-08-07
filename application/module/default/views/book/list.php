@@ -1,4 +1,9 @@
 <?php 
+  $catID = $_GET['catID']??'';
+  $linkNew      = URL::createLink('default',$_GET['controller'],'list',['filter' => 'new','catID' => $catID]);
+  $LinkName     = URL::createLink('default',$_GET['controller'],'list',['filter' => 'name','catID' => $catID]);
+  $LinkOrdering = URL::createLink('default',$_GET['controller'],'list',['filter' => 'ordering','catID' => $catID]);
+  $linkPrice      = URL::createLink('default',$_GET['controller'],'list',['filter' => 'price','catID' => $catID]);
   $pagination = $this->pagination->showPagination(true);
   $hiddenPage = Helper::cmsInput('hidden','filter_page','1');
 ?>
@@ -14,7 +19,13 @@
   </div>
   <div class="toolbar-sorter">
     <span>Sort By</span>
-    <?php include_once BLOCK_PATH . 'sort.php';?>
+    <select id="sort" onchange="location = this.value;">
+      <option value="<?php echo $linkNew ?>">New</option>
+      <option value="<?php echo $LinkName ?>">Name</option>
+      <option value="<?php echo $LinkOrdering ?>">Ordering</option>
+      <option value="<?php echo $linkPrice ?>">Price</option>
+    </select>
+    <a href="#"><i class="fa fa-arrow-down"></i></a>
   </div>
 </div>
 <div class="tab-content">
@@ -41,7 +52,9 @@
                         </div><hr>';
             }
           } else {
-            $xhtml .= '<h4 style="color:red;font-weight:bold"> No Data</h4>';
+            $xhtml .= '<div class="text-center" style="margin-top:20px;">
+                        <img src="public/template/default/main/img/nodata.png" />
+                      </div>';
           }
           echo $xhtml;
         ?>  

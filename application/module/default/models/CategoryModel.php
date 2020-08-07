@@ -16,8 +16,10 @@ class CategoryModel extends Model{
 			} else {
 				$this->orderBy('id','desc');
 			}
+		} else {
+			$this->orderBy('id','desc');
 		}
-		$this->orderBy('id','desc');
+		
 		$result = $this->arraybuilder()->paginate("`$this->table`", $currentPage);
 
 		return $result;

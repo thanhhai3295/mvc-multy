@@ -1,15 +1,12 @@
 <div class="shop-left">
   <div class="section-title-5 mb-30">
-    <h2>Shopping Options</h2>
-  </div>
-  <div class="left-title mb-20">
-    <h4>Category</h4>
+    <h4>THỂ LOẠI</h4>
   </div>
   <div class="left-menu mb-30">
     <?php include_once BLOCK_PATH . 'category.php';?>
   </div>
   <div class="left-title mb-20">
-    <h4>Promotion</h4>
+    <h4>Khuyến Mãi</h4>
   </div>
   <div class="random-area mb-30">
     <div class="product-active-2 owl-carousel">
@@ -20,7 +17,7 @@
   </div>
 
   <div class="left-title mb-20">
-    <h4>Specials</h4>
+    <h4>Đặc Biệt</h4>
   </div>
   <div class="random-area mb-30">
     <div class="product-active-2 owl-carousel">

@@ -11,11 +11,11 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
         <div class="logo-area text-center logo-xs-mrg">
-          <a href="index.html"><img src="public/template/default/main/img/logo/logo.png" alt="logo" /></a>
+          <a href="index.html"><img src="public/template/default/main/img/logo/bookstore2-logo.png" alt="logo" /></a>
         </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-        <?php include 'mycart.php'; ?>
+        <?php include 'my-cart.php'; ?>
       </div>
     </div>
   </div>

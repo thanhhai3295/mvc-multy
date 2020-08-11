@@ -16,12 +16,12 @@ $(document).ready(function() {
     var controller = matchesController[1];
   }
   
-  if(controller == 'index') controller = 'home';
- 
+  if(controller == 'index') controller = 'trang chủ';
+  if(controller == 'category') controller = 'thể loại';
   var li = document.querySelectorAll('div.menu-area nav ul li');
   li.forEach(element => {
-    console.log(controller==element.textContent.trim().toLowerCase());
-    if(element.textContent.trim().toLowerCase() == controller) {
+    console.log(element.textContent);
+    if(element.firstElementChild.textContent.trim().toLowerCase() == controller) {
       element.classList.add('active');
     }
   });

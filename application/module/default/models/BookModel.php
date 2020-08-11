@@ -4,12 +4,11 @@ class BookModel extends Model{
 		parent::__construct();
 		$this->setTable(TBL_BOOK);
 	}
-	public function listItems($params) {
+	public function listItems($params,$options) {
 		$catID		= $params['catID'];
 		$query	= "SELECT `id`, `name`, `picture`, `description`, `category_id`";
 		$query	.= "FROM `$this->table`";
 		$query	.= "WHERE `status`  = 'active' AND `category_id` = '$catID'";
-
 		if(isset($params['filter'])) {
 			if($params['filter'] != 'new') {
 				$filter = $params['filter'];
@@ -45,11 +44,11 @@ class BookModel extends Model{
 		$query	= "SELECT `name` FROM `".TBL_CATEGORY."` WHERE `id` = '" . $params['catID'] . "'";
 		return $this->rawQueryOne($query);
 	}
-	public function bookInfo($params) {
+	public function getItem($params) {
 		$query	= "SELECT `b`.`id`, `b`.`name`, `c`.`name` AS `category_name`, `b`.`price`, `b`.`sale_off`, `b`.`picture`, `b`.`description`, `b`.`category_id` FROM `".TBL_BOOK."` AS `b`, `".TBL_CATEGORY."` AS `c` WHERE `b`.`id` = '" . $params['bookID'] . "' AND `c`.`id` = `b`.`category_id`";
 		return $this->rawQueryOne($query);
 	}
-	public function bookRelate($params) {
+	public function getItemRelate($params) {
 		$bookID		= $params['bookID'];
 		$id  = $this->rawQueryOne('select category_id from '.TBL_BOOK.' where id ='.$bookID);
 		$catID = $id['category_id'];

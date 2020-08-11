@@ -1,25 +1,5 @@
 <footer>
-  <!-- footer-top-start -->
-  <div class="footer-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="footer-top-menu bb-2">
-            <nav>
-              <ul>
-                <li><a href="#">home</a></li>
-                <li><a href="#">Enable Cookies</a></li>
-                <li><a href="#">Privacy and Cookie Policy</a></li>
-                <li><a href="#">contact us</a></li>
-                <li><a href="#">blog</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- footer-top-start -->
+
   <!-- footer-mid-start -->
   <div class="footer-mid ptb-50">
     <div class="container">
@@ -29,14 +9,14 @@
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="single-footer br-2 xs-mb">
                                     <div class="footer-title mb-20">
-                                        <h3>Products</h3>
+                                        <h3>Thể Loại Nổi Bật</h3>
                                     </div>
                                     <div class="footer-mid-menu">
                                         <ul>
-                                            <li><a href="about.html">About us</a></li>
-                                            <li><a href="#">Prices drop </a></li>
-                                            <li><a href="#">New products</a></li>
-                                            <li><a href="#">Best sales</a></li>
+                                            <li><a href="#">Tiểu Thuyết</a></li>
+                                            <li><a href="#">Kinh Dị</a></li>
+                                            <li><a href="#">Kỹ Năng Sống</a></li>
+                                            <li><a href="#">Tin Học</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -44,14 +24,14 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="single-footer br-2 xs-mb">
                                     <div class="footer-title mb-20">
-                                        <h3>Our company</h3>
+                                        <h3>Sách Nổi Bật</h3>
                                     </div>
                                     <div class="footer-mid-menu">
                                         <ul>
-                                            <li><a href="contact.html">Contact us</a></li>
-                                            <li><a href="#">Sitemap</a></li>
-                                            <li><a href="#">Stores</a></li>
-                                            <li><a href="register.html">My account </a></li>
+                                            <li><a href="#">Quán Ăn Xuyên Không</a></li>
+                                            <li><a href="#">Tư Duy Như Sherlock Holmes</a></li>
+                                            <li><a href="#">Mối Tình Đầu (Tiểu Thuyết)</a></li>
+                                            <li><a href="register.html">Thời Gian Tác Chiến</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -59,14 +39,13 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="single-footer br-2 xs-mb">
                                     <div class="footer-title mb-20">
-                                        <h3>Your account</h3>
+                                        <h3>Tài Khoản Của Bạn</h3>
                                     </div>
                                     <div class="footer-mid-menu">
                                         <ul>
-                                            <li><a href="contact.html">Addresses</a></li>
-                                            <li><a href="#">Credit slips </a></li>
-                                            <li><a href="#"> Orders</a></li>
-                                            <li><a href="#">Personal info</a></li>
+                                            <li><a href="#">Đăng Nhập</a></li>
+                                            <li><a href="#">Đăng Kí</a></li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -76,15 +55,14 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                         <div class="single-footer mrg-sm">
                             <div class="footer-title mb-20">
-                                <h3>STORE INFORMATION</h3>
+                                <h3>Địa Chỉ Văn Phòng</h3>
                             </div>
                             <div class="footer-contact">
-                                <p class="adress">
-                                    <span>My Company</span>
-                                    42 avenue des Champs Elysées 75000 Paris France
+                                <p class="adress">                                   
+                                    3295 Phạm Thế Hiển P7 Q8 TPHCM  
                                 </p>
-                                <p><span>Call us now:</span> (+1)866-540-3229</p>
-                                <p><span>Email:</span>  support@hastech.com</p>
+                                <p><span>Hotline:</span> (+84) 798-121-502</p>
+                                <p><span>Email:</span>  thanhhai3295@gmail.com</p>
                             </div>
                         </div>
             </div>
@@ -98,14 +76,10 @@
       <div class="row bt-2">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="copy-right-area">
-            <p>Copyright ©<a href="#">Koparion</a>. All Right Reserved.</p>
+            <p>Copyright ©<a href="#">Hải Đẹp Trai</a>. All Right Reserved.</p>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          <div class="payment-img text-right">
-            <a href="#"><img src="public/template/default/main/img/1.png" alt="payment" /></a>
-          </div>
-        </div>
+       
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ class CategoryModel extends Model{
 		parent::__construct();
 		$this->setTable(TBL_CATEGORY);
 	}
-	public function listItems($params) {
+	public function listItems($params,$options) {
 		$totalItemsPerPage = $params['pagination']['totalItemsPerPage'];
 		$currentPage 			 = $params['pagination']['currentPage'];
 	

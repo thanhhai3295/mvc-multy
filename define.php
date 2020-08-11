@@ -16,8 +16,8 @@
 	define	('APPLICATION_URL'	, ROOT_URL . 'application' . DS);
 	define	('PUBLIC_URL'		, ROOT_URL . 'public' . DS);
 	define	('UPLOAD_URL'		, PUBLIC_URL . 'files' . DS);
-	define	('TEMPLATE_URL'		, PUBLIC_URL . 'template' . DS);
-	
+	define	('TEMPLATE_URL'	, PUBLIC_URL . 'template' . DS);
+	define  ('BOOK_URL'			,UPLOAD_URL.'book'.DS);
 	
 	define	('DEFAULT_MODULE'		, 'default');
 	define	('DEFAULT_CONTROLLER'	, 'index');

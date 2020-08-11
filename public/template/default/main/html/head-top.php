@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="language-area">
+        <!-- <div class="language-area">
           <ul>
             <li><img src="public/template/default/main/img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
               <div class="header-sub">
@@ -21,14 +21,12 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="account-area text-right">
           <ul>
-            <li><a href="register.html">My Account</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
-            <li><a href="login.html">Sign in</a></li>
+            <li><a href="index.php?module=admin&controller=index&action=login">Đăng Nhập</a></li>
           </ul>
         </div>
       </div>

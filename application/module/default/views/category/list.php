@@ -1,30 +1,24 @@
 <?php 
-  $linkNew      = URL::createLink('default',$_GET['controller'],'list',['filter' => 'new']);
-  $LinkName     = URL::createLink('default',$_GET['controller'],'list',['filter' => 'name']);
-  $LinkOrdering = URL::createLink('default',$_GET['controller'],'list',['filter' => 'ordering']);
-  $pagination = $this->pagination->showPagination(true);
-  $hiddenPage = Helper::cmsInput('hidden','filter_page','1');
-
+  $linkNew      = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'new']);
+  $LinkName     = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'name']);
+  $LinkOrdering = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'ordering']);
+  $data = [
+    'new' => $linkNew,
+    'name' => $LinkName,
+    'ordering' => $LinkOrdering,
+  ];
+  $pagination = $this->pagination->frontEndPagination($this->arrParam);
+  HTMLFrontEnd::showTitle($this->_title);
 ?>
-<div class="section-title-5 mb-30">
-  <h2><?php echo $this->_title ?></h2>
-</div>
+
 <div class="toolbar mb-30">
   <div class="shop-tab">
     <div class="tab-3">
-      <h3>...</h3>
+      <h3></h3>
     </div>
 
   </div>
-  <div class="toolbar-sorter">
-    <span>Sort By</span>
-    <select id="sort" onchange="location = this.value;">
-      <option value="<?php echo $linkNew ?>">New</option>
-      <option value="<?php echo $LinkName ?>">Name</option>
-      <option value="<?php echo $LinkOrdering ?>">Ordering</option>
-    </select>
-    <a href="#"><i class="fa fa-arrow-down"></i></a>
-  </div>
+  <?php HTMlFrontEnd::createFilter($data)?>
 </div>
 
 <div class="tab-content">
@@ -67,7 +61,3 @@
       <?php echo $pagination; ?>
     </div>
 </div>
-
-<form action="" id="adminForm" method="POST">
-  <?php echo $hiddenPage; ?>
-</form>

@@ -26,7 +26,7 @@
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="account-area text-right">
           <ul>
-            <li><a href="index.php?module=admin&controller=index&action=login">Đăng Nhập</a></li>
+            <li><a href="#">Đăng Nhập</a></li>
           </ul>
         </div>
       </div>

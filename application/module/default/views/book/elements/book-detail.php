@@ -4,7 +4,8 @@
   $description = $this->bookInfo['description'];
   $price       = $this->bookInfo['price'];
   $sale        = $this->bookInfo['sale_off'];
-  $sale_off = HTMLFrontEnd::salePrice($sale,$price);  
+  $sale_off = HTMLFrontEnd::showPrice($sale,$price);  
+  $linkOrder = URL::createLink('default','user','order',['bookID' => $this->bookInfo['id'],'price' => HTMLFrontEnd::salePrice($sale,$price)]);
 ?>
 
 <div class="product-main-area">
@@ -30,7 +31,7 @@
             <div class="quality-button">
               <input class="qty" type="number" value="1">
             </div>
-            <a href="#">Add to cart</a>
+            <a href="<?php echo $linkOrder ?>">Add to cart</a>
           </form>
         </div>
         <div class="product-social-links">

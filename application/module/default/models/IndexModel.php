@@ -21,4 +21,13 @@ class IndexModel extends Model{
 		$result = $this->rawQuery($query);
 		return $result;
 	}
+
+	public function infoItem($arrParam){
+		$username	= $arrParam['form']['username'];
+		$password	= md5($arrParam['form']['password']);
+		$query = "SELECT `u`.`id`, `u`.`fullname`, `u`.`email`, `u`.`username`, `u`.`group_id`, `g`.`group_acp`, `g`.`privilege_id`";
+		$query .= "FROM `user` AS `u` LEFT JOIN `group` AS g ON `u`.`group_id` = `g`.`id`";
+		$query .= "WHERE `username` = '$username' AND `password` = '$password'";
+		$result = $this->rawQueryOne($query);
+	}
 }

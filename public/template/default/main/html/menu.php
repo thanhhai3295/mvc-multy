@@ -8,6 +8,7 @@
               <li><a href="index.php?module=default&controller=index&action=index">Trang Chủ</i></a>
               </li>
               <li><a href="index.php?module=default&controller=category&action=list">Thể Loại<i class="fa fa-angle-down"></i></a>
+              <li><a href="index.php?module=default&controller=user&action=index">Tài Khoản<i class="fa fa-angle-down"></i></a>
               <div class="mega-menu">
                 <?php 
                   $db = new Model();

@@ -18,6 +18,7 @@ $(document).ready(function() {
   
   if(controller == 'index') controller = 'trang chủ';
   if(controller == 'category') controller = 'thể loại';
+  if(controller == 'user') controller = 'tài khoản';
   var li = document.querySelectorAll('div.menu-area nav ul li');
   li.forEach(element => {
     console.log(element.textContent);

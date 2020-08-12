@@ -20,13 +20,15 @@
       echo $xhtml;           
     }
 
-    public static function salePrice($sale,$price) {
+    public static function showPrice($sale,$price) {
       if($sale > 0) {
         return '<span>'.number_format((100-$sale)*($price/100)).'đ </span><span class="old-price">'.number_format($price).'đ</span>';
       } else {
         return '<span>'.number_format($price).'đ</span>';
       }
     }
-    
+    public static function salePrice($sale,$price) {
+      return (100-$sale)*($price/100);
+    }
   }
 ?>

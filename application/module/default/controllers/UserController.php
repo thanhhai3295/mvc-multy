@@ -3,13 +3,13 @@ class UserController extends DefaultController{
 	
 	public function indexAction(){
 		$this->_view->_title	= 'My Account';
-		$this->_view->render('user/index');
+		$this->_view->render($this->nameController.'/index');
 	}
 	
 	public function cartAction(){
 		$this->_view->_title	= 'My Cart';
 		$this->_view->Items		= $this->_model->listItem($this->_arrParam, array('task' => 'books-in-cart'));
-		$this->_view->render('user/cart');
+		$this->_view->render($this->nameController.'/cart');
 	}
 	
 	public function orderAction(){
@@ -18,15 +18,19 @@ class UserController extends DefaultController{
 		$price	= $this->_arrParam['price'];
 		
 		if(empty($cart)){
-			$cart['quantity'][$bookID]	= 1;
-			$cart['price'][$bookID]		= $price;
+			$cart[$bookID]['quantity']	= 1;
+			$cart[$bookID]['price']		= $price;
+			$cart[$bookID]['image']		= $this->_model->listItem($this->_arrParam, array('task' => 'get-image'));
+			$cart[$bookID]['name']		= $this->_model->listItem($this->_arrParam, array('task' => 'get-name'));
 		}else{
-			if(key_exists($bookID, $cart['quantity'])){
-				$cart['quantity'][$bookID]	+=1;
-				$cart['price'][$bookID]		= $price * $cart['quantity'][$bookID];
+			if(key_exists('quantity', $cart[$bookID])){
+				$cart[$bookID]['quantity']	+=1;
+				$cart[$bookID]['price']		= $price * $cart[$bookID]['quantity'];
 			}else{
-				$cart['quantity'][$bookID]	= 1;
-				$cart['price'][$bookID]		= $price;
+				$cart[$bookID]['quantity']	= 1;
+				$cart[$bookID]['price']		= $price;
+				$cart[$bookID]['image']		= $this->_model->listItem($this->_arrParam, array('task' => 'get-image'));
+				$cart[$bookID]['name']		= $this->_model->listItem($this->_arrParam, array('task' => 'get-name'));
 			}
 		}
 		
@@ -37,7 +41,7 @@ class UserController extends DefaultController{
 	public function historyAction(){
 		$this->_view->_title	= 'History';
 		$this->_view->Items		= $this->_model->listItem($this->_arrParam, array('task' => 'history-cart'));
-		$this->_view->render('user/history');
+		$this->_view->render($this->nameController.'/history');
 	}
 	
 	public function buyAction(){

@@ -33,7 +33,7 @@ class UserModel extends Model{
 			$result	= array();
 			if(!empty($cart)){
 				$ids	= "(";
-				foreach($cart['quantity'] as $key => $value) $ids .= "'$key', ";
+				foreach($cart as $key => $value) $ids .= "'$key', ";
 				$ids	.= " '0')" ;
 				$query	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`, `b`.`category_id`, `c`.`name` AS `category_name`";
 				$query .= "FROM `".TBL_BOOK."` AS `b`, `".TBL_CATEGORY."` AS `c`";
@@ -42,28 +42,35 @@ class UserModel extends Model{
 				$result		= $this->rawQuery($query);
 
 				foreach($result as $key => $value){
-					$result[$key]['quantity']	= $cart['quantity'][$value['id']];
-					$result[$key]['totalprice']	= $cart['price'][$value['id']];
+					$result[$key]['quantity']	= $cart[$value['id']]['quantity'];
+					$result[$key]['totalprice']	= $cart[$value['id']]['price'];
 					$result[$key]['price']		= $result[$key]['totalprice'] / $result[$key]['quantity'];
 				}
 			}
+
 			return $result;
 		}
 		
 		if($option['task'] == 'history-cart'){
-			$username	= $this->_userInfo['username'];
-		
-			$query[]	= "SELECT `id`, `books`, `prices`, `quantities`, `names`, `pictures`, `status`, `date`";
-			$query[]	= "FROM `".TBL_CART."`";
-			$query[]	= "WHERE `username` = '$username'";
-			
-			
-			$query[]	= "ORDER BY `date` ASC";
-		
-			$query		= implode(" ", $query);
-			$result		= $this->fetchAll($query);
-				
+			$username	= $this->_userInfo['username'];	
+			$query	= "SELECT `id`, `books`, `prices`, `quantities`, `names`, `pictures`, `status`, `date`";
+			$query	.= "FROM `".TBL_CART."`";
+			$query	.= "WHERE `username` = '$username'";	
+			$query	.= "ORDER BY `date` ASC";
+			$result		= $this->rawQuery($query);		
 			return $result;
+		}
+
+		if($option['task'] == 'get-image'){
+			$query = "SELECT picture FROM ".TBL_BOOK." WHERE id=".$arrParam['bookID'];
+			$result		= $this->rawQueryOne($query);
+			return $result['picture'];
+		}
+
+		if($option['task'] == 'get-name'){
+			$query = "SELECT name FROM ".TBL_BOOK." WHERE id=".$arrParam['bookID'];
+			$result		= $this->rawQueryOne($query);
+			return $result['name'];
 		}
 	}
 

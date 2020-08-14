@@ -3,7 +3,7 @@
 	$username 	= $this->arrParam['form']['username'] ?? '';
 	$password 	= $this->arrParam['form']['password'] ?? '';
   $error 			= isset($this->errors) ? 'Tài Khoản Hoặc Mật Khẩu Không Đúng!' : '';
-  
+  $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 <div class="container">
   <?php HTMLFrontEnd::showTitle($this->_title); ?>
@@ -25,6 +25,8 @@
     </div>
     <a href="#">Lost your password?</a>
     <input type="hidden" name="form[token]" value="<?php echo time(); ?>">
+
+    <input type="hidden" name="url" value="<?php echo $actual_link ?>">
     </form>
 </div>
 </div>

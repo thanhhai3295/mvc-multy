@@ -1,5 +1,4 @@
 <?php 
-  HTMLFrontEnd::createMessage();
   include 'elements/feature-book.php' 
 ?>
 <div class="row newbook">

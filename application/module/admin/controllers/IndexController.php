@@ -63,9 +63,6 @@ class IndexController extends Controller{
 		$this->_templateObj->load();
 		$this->_view->_title 		= 'Search';
 		$this->_view->group = $this->_model->getGroup($this->_arrParam);
-		echo '<pre>';
-		print_r($this->_view->group);
-		echo '</pre>';
 		$this->_view->render('index/search');
 	}
 }

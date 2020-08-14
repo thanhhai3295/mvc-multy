@@ -30,13 +30,18 @@ class IndexController extends DefaultController{
 				);
 				Session::set('user', $arraySession);
 				Session::set('success',SUCCESS_LOGIN);
-				URL::redirect('default', 'user', 'index');
+				$this->redirectCurrentURL();
 			}else{
 				$this->_view->errors	= $validate->getError();
 			}
 		}
 	
 		$this->_view->render('index/login');
+	}
+
+	public function logoutAction(){
+		Session::delete('user');
+		$this->redirectCurrentURL();
 	}
 
 } 

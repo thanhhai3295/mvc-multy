@@ -6,6 +6,11 @@ $('#adminForm').submit();
 function submitForm(){
   $('#adminForm').submit();
 }
+function submitURL(url){
+  $('#urlForm').attr('action', url);
+  $('input[name=url]').val(window.location.href);
+  $('#urlForm').submit();
+}
 
 $(document).ready(function() {
   var url    = window.location.href;

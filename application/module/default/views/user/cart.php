@@ -26,6 +26,7 @@
             if(!empty($this->Items)) {
               foreach ($this->Items as $key => $value) {
                 $linkDetailBook = URL::createLink('default','book','detail',['bookID' => $value['id']]);
+                $linkDelete = URL::createLink('default','user','delete',['bookID' => $value['id']]);
                 $picture = BOOK_URL.$value['picture'];
                 $name = $value['name'];
                 $price = number_format($value['price']).'đ';
@@ -46,7 +47,7 @@
                             <td class="product-price"><span class="amount">'.$price.'</span></td>
                             <td class="product-quantity"><input type="number" value="'.$quantity.'"></td>
                             <td class="product-subtotal">'.$totalprice.'</td>
-                            <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                            <td class="product-remove"><a href="#" onClick="submitURL(\''.$linkDelete.'\')"><i class="fa fa-times"></i></a></td>
                           </tr>';
                 $xhtml	.= $inputBookID . $inputQuantity . $inputPrice . $inputName . $inputPicture;
               }

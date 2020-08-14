@@ -10,6 +10,7 @@
 <body class="shop">
 	<header>
 		<?php 
+			HTMLFrontEnd::createMessage();
 			include 'html/head-top.php'; 
 			include 'html/head-mid.php';
 			include 'html/menu.php' 
@@ -35,6 +36,9 @@
 			</div>
 		</div>
 	</div>
+		<form action="" method="POST" id="urlForm">
+			<input type="hidden" name="url">
+		</form>
     <?php 
       include 'html/footer.php'; 
       echo $this->_jsFiles;

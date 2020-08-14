@@ -5,6 +5,7 @@
   $xhtml = '';
 	if(!empty($cart)){
 		foreach ($cart as $key => $value) {
+      $linkDelete = URL::createLink('default','user','delete',['bookID' => $key]);
       $totalItems += $value['quantity'];
       $totalPrices += $value['price'];
       $oldPrice = $value['price']/$value['quantity'];
@@ -19,7 +20,7 @@
                     <p>'.$value['quantity'].' x '.number_format($oldPrice).'đ</p>
                   </div>
                   <div class="cart-icon">
-                      <a href="#"><i class="fa fa-remove"></i></a>
+                      <a href="#" onClick="submitURL(\''.$linkDelete.'\')"><i class="fa fa-remove"></i></a>
                   </div>
                 </div>';
     }

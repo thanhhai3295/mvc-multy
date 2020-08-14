@@ -95,5 +95,8 @@ class Controller{
 		$this->_arrParam['pagination']			= $this->_pagination;
 		$this->_view->arrParam							= $this->_arrParam;
 	}
-	
+	public function redirectCurrentURL(){
+		$currentURL = $this->_arrParam['url'];
+		header("location: $currentURL");
+	}
 }

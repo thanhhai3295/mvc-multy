@@ -53,8 +53,13 @@ class UserController extends DefaultController{
 		} else {
 			Session::set('error',ERROR_BUY_CART);
 			URL::redirect('default', 'index', 'index');
-		}
-		
+		}	
+	}
+	public function deleteAction(){
+		$id = $this->_arrParam['bookID'];
+		unset($_SESSION['cart'][$id]);
+		Session::set('success',SUCCESS_DELETE);
+		$this->redirectCurrentURL();
 	}
 }
 

@@ -1,4 +1,5 @@
-<?php 
+<?php
+  HTMLFrontEnd::createMessage();
   $linkHistory = URL::createLink('default','user','history');
 ?>
 <div class="container">

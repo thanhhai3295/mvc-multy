@@ -51,7 +51,7 @@
     $xhtml .= '<h4 class="amount text-right">Total: <span style="color:red";>'.number_format($totalPrice).'đ</span></h3><hr>'; 
   }
   } else {
-    $xhtml = '<h3>Chưa có đơn hàng nào!</h3>';
+    $xhtml = HTMLFrontEnd::noData(NO_ORDER);
   }
 ?>
 <div class="row">

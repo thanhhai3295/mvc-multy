@@ -27,7 +27,7 @@
                   </div>';
               }
             } else {
-              $xhtml = 'No Related Book';
+              $xhtml .= HTMLFrontEnd::noData(NO_RELATE_BOOK);
             }
             echo $xhtml;
           ?>

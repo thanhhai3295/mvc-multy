@@ -16,13 +16,10 @@ class IndexController extends DefaultController{
 		$this->_view->_title 		= 'Login';
 	
 		if(isset($this->_arrParam['form']['token'])){
-			$validate	= new Validate($this->_arrParam['form']);
 			$username		= $this->_arrParam['form']['username'];
 			$password	= md5($this->_arrParam['form']['password']);
 			$query		= "SELECT `id` FROM `user` WHERE `username` = '$username' AND `password` = '$password'";
-			$validate->addRule('username', 'existRecord', array('database' => $this->_model, 'query' => $query));
-			$validate->run();
-				
+			$validate	= new IndexValidate($this->_arrParam['form'],$query,$this->_model);
 			if($validate->isValid()==true){
 				$infoUser		= $this->_model->infoItem($this->_arrParam);
 				$arraySession	= array(
@@ -32,6 +29,7 @@ class IndexController extends DefaultController{
 						'group_acp'	=> $infoUser['group_acp']
 				);
 				Session::set('user', $arraySession);
+				Session::set('success',SUCCESS_LOGIN);
 				URL::redirect('default', 'user', 'index');
 			}else{
 				$this->_view->errors	= $validate->getError();

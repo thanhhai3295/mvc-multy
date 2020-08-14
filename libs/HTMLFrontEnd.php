@@ -30,5 +30,27 @@
     public static function salePrice($sale,$price) {
       return (100-$sale)*($price/100);
     }
+    public static function noDataTable($colspan, $content){
+      return '<tr><td colspan="'.$colspan.'">'.$content.'</td></tr>';
+    }
+    public static function noData($content){
+      return '<h4 style="color:red;font-weight:bold">'.$content.'</h4>';
+    }
+    public static function createMessage(){
+      $str = ''; $type = ''; 
+      if (count($_SESSION) > 1) {
+        foreach ($_SESSION as $key => $value) {
+          if ($key == 'success' || $key == 'error') {
+            $str = $value;
+            $type = $key;
+            unset($_SESSION[$key]);
+            echo "<script>message('$str','$type');</script>";
+          }
+        }
+      } else {
+        return ;
+      }
+      
+    }
   }
 ?>

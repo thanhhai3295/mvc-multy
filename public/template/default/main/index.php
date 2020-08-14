@@ -4,6 +4,9 @@
 	<?php echo $this->_metaName;?>
 	<title><?php echo $this->_title ?></title>
 	<?php echo $this->_cssFiles;?>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.5/bootstrap-notify.min.js"></script>
+  <script src="public/template/admin/adminlte/js/message.js"></script>
 <body class="shop">
 	<header>
 		<?php 

@@ -29,5 +29,6 @@ class IndexModel extends Model{
 		$query .= "FROM `user` AS `u` LEFT JOIN `group` AS g ON `u`.`group_id` = `g`.`id`";
 		$query .= "WHERE `username` = '$username' AND `password` = '$password'";
 		$result = $this->rawQueryOne($query);
+		return $result;
 	}
 }

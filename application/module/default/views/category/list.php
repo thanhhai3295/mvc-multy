@@ -46,7 +46,7 @@
             }
            
           } else {
-            $xhtml .= '<h4 style="color:red;font-weight:bold"> No Data</h4>';
+            $xhtml .= HTMLFrontEnd::noData(NO_DATA);
           }
           echo $xhtml;
         ?>  

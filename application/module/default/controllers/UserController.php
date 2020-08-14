@@ -35,6 +35,7 @@ class UserController extends DefaultController{
 		}
 		
 		Session::set('cart', $cart);
+		Session::set('success',SUCCESS_ADD_CART);
 		URL::redirect('default', 'book', 'detail', array('bookID' => $bookID));
 	}
 
@@ -45,8 +46,15 @@ class UserController extends DefaultController{
 	}
 	
 	public function buyAction(){
-		$this->_model->saveItem($this->_arrParam, array('task' => 'submit-cart'));
-		URL::redirect('default', 'index', 'index');
+		if(isset($this->_arrParam['form'])) {
+			$this->_model->saveItem($this->_arrParam, array('task' => 'submit-cart'));
+			Session::set('success',SUCCESS_BUY_CART);
+			URL::redirect('default', 'index', 'index');
+		} else {
+			Session::set('error',ERROR_BUY_CART);
+			URL::redirect('default', 'index', 'index');
+		}
+		
 	}
 }
 

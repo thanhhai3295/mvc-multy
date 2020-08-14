@@ -47,9 +47,7 @@
                         </div><hr>';
             }
           } else {
-            $xhtml .= '<div class="text-center" style="margin-top:20px;">
-                        <img src="public/template/default/main/img/nodata.png" />
-                      </div>';
+            $xhtml .= HTMLFrontEnd::noData(NO_DATA);
           }
           echo $xhtml;
         ?>  

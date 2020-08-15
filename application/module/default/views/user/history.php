@@ -22,14 +22,10 @@
     $arrPicture		= json_decode($value['pictures']);
     $tableContent	= '';
     $totalPrice		= 0;
+    $linkDeleteHistory = URL::createLink('default','user','deleteHistory');
     foreach ($arrBookID as $keyB => $valueB){
       $linkDetail		= URL::createLink('default', 'book', 'detail', array('book_id' => $valueB));
-      $picturePath	= UPLOAD_PATH . 'book' . DS . '98x150-' . $arrPicture[$keyB];
-      if(file_exists($picturePath)==true){
-        $picture	= '<img  width="30" height="45" src="'.UPLOAD_URL . 'book' . DS . '98x150-' . $arrPicture[$keyB].'">';
-      }else{
-        $picture	= '<img width="30" height="45" src="'.UPLOAD_URL . 'book' . DS . '98x150-default.jpg' .'">';
-      }
+      $picture = Helper::createImage('book','','98x150-'.$arrPicture[$keyB],['width'=>'30','height' => '45']);
       $totalPrice		+= $arrQuantity[$keyB] * $arrPrice[$keyB];
       $tableContent .= '<tr>
               <td><a href="'.$linkDetail.'">'.$picture.'</a></td>
@@ -37,7 +33,7 @@
               <td>'.number_format($arrPrice[$keyB]).'</td>
               <td>'.$arrQuantity[$keyB].'</td>
               <td>'.number_format($arrQuantity[$keyB] * $arrPrice[$keyB]).'</td>
-              <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+              <td class="product-remove"><a href="#" onClick="deleteHistory(\''.$linkDeleteHistory.'\',\''.$valueB.'\',\''.$cartId.'\')"><i class="fa fa-times"></i></a></td>
             </tr>';
     }
 
@@ -56,10 +52,12 @@
 ?>
 <div class="row">
   <div class="col-lg-12">
-    <form action="#">
+    <form action="" method="POST" id="deleteHistory">
       <div class="table-content table-responsive">
         <?php echo $xhtml; ?>
       </div>
+      <input type="hidden" name="book_id">
+      <input type="hidden" name="cart_id">
     </form>
   </div>
 </div>

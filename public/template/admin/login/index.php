@@ -5,8 +5,6 @@
 <?php echo $this->_metaName;?>
 <title><?php echo $this->_title;?></title>
 <?php echo $this->_cssFiles;?>
-
-	<meta charset="UTF-8">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="public/template/admin/login/images/icons/favicon.ico"/>
 <!--===============================================================================================-->

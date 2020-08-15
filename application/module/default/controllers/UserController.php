@@ -61,5 +61,11 @@ class UserController extends DefaultController{
 		Session::set('success',SUCCESS_DELETE);
 		$this->redirectCurrentURL();
 	}
+
+	public function deleteHistoryAction(){
+		$this->_model->deleteHistory($this->_arrParam);
+		Session::set('success',SUCCESS_HISTORY);
+		$this->redirect('default','user','history');
+	}
 }
 

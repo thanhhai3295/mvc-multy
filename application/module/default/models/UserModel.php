@@ -96,12 +96,27 @@ class UserModel extends Model{
 	}
 	
 	private function randomString($length = 5){
-	
 		$arrCharacter = array_merge(range('a','z'), range(0,9), range('A','Z'));
 		$arrCharacter = implode($arrCharacter, '');
 		$arrCharacter = str_shuffle($arrCharacter);
-	
 		$result		= substr($arrCharacter, 0, $length);
 		return $result;
+	}
+
+	public function deleteHistory($params){
+		$cartID = $params['cart_id'];
+		$bookID = $params['book_id'];
+		$query = "SELECT books FROM ".TBL_CART." WHERE id='".$cartID."'";
+		$result = $this->rawQueryOne($query);
+		$count = count(json_decode($result['books']));
+		if($count > 1) {
+			$arrBookID = json_decode($result['books']);
+			$arrBookID = json_encode(array_values(array_diff($arrBookID,[$bookID])));
+			
+			$query = "UPDATE `".TBL_CART."` SET `books`='$arrBookID' WHERE id='$cartID'";
+			$this->rawQuery($query);
+		} else {
+			$this->rawQuery("DELETE FROM `".TBL_CART."` WHERE `id`='$cartID'");
+		}
 	}
 }

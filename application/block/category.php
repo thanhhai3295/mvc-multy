@@ -14,7 +14,8 @@
   foreach ($result as $key => $value) {
     $active = '';
     if($value['id'] == $catID) $active = 'style="color:orange;"';
-    $link   = URL::createLink('default','book','list',['catID' => $value['id']]);
+    $nameURL = URL::filterURL($value['name']);
+    $link   = URL::createLink('default','book','list',['catID' => $value['id']],$nameURL.'-'.$value['id'].'.html');
     $xhtml .= '<ul>
                 <li><a '.$active.' href="'.$link.'">'.$value['name'].'</a></li>
               </ul>';

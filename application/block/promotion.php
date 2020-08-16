@@ -1,12 +1,15 @@
 <?php 
-  
-  $sql = "SELECT id,name,picture,sale_off,price FROM ".TBL_BOOK." WHERE sale_off > 0";
+  $sql = "SELECT `b`.`id`, `b`.`name`, `c`.`name` AS `category_name`, `b`.`picture`, `b`.`category_id`, `b`.`sale_off`, `b`.`price` FROM `".TBL_BOOK."` AS `b`, `".TBL_CATEGORY."` AS `c` WHERE `b`.`status`  = 'active' AND `b`.`sale_off` > 0 AND `b`.`category_id` = `c`.`id` ORDER BY `b`.`ordering` ASC";
   $result = $db->rawQuery($sql);
   $randomArray = array_rand($result, 2);
   $xhtml = '';
   foreach ($randomArray as $key => $value) {
-    $link = URL::createLink('default','book','detail',['bookID' => $result[$value]['id']]);
-    $name    = $result[$value]['name'];
+    $name       = $result[$value]['name'];
+    $bookID			= $result[$value]['id'];
+    $catID			= $result[$value]['category_id'];
+    $bookNameURL	= URL::filterURL($name);
+    $catNameURL		= URL::filterURL($result[$value]['category_name']);
+    $link = URL::createLink('default','book','detail',['bookID' => $bookID,'catID' => $catID],"$catNameURL/$bookNameURL-$catID-$bookID.html");
     $picture = Helper::createImage('book', '', $result[$value]['picture']);
     $price = $result[$value]['price'];
     $sale = $result[$value]['sale_off'];

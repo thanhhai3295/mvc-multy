@@ -10,6 +10,7 @@
 	<link rel="icon" type="image/png" href="public/template/default/main/img/favicon.png"/>
 
 <body class="shop">
+
 	<header>
 		<?php 
 			HTMLFrontEnd::createMessage();

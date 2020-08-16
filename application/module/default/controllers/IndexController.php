@@ -11,7 +11,7 @@ class IndexController extends DefaultController{
 	public function loginAction(){
 		$userInfo	= Session::get('user');
 		if($userInfo['login'] == true && $userInfo['time'] + TIME_LOGIN >= time()){
-			URL::redirect('default', 'user', 'index');
+			URL::redirect('default', 'user', 'index',null,'my-account.html');
 		}
 		$this->_view->_title 		= 'Login';
 	

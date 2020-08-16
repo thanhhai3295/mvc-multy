@@ -1,5 +1,5 @@
 <?php
-  $linkHistory = URL::createLink('default','user','history');
+  $linkHistory = URL::createLink('default','user','history',null,'history.html');
 ?>
 <div class="container">
   <div class="col-md-2">

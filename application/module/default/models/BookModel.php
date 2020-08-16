@@ -20,7 +20,6 @@ class BookModel extends Model{
 			$query .= "ORDER BY ID DESC ";
 		}
 		
-		
 		$pagination					= $params['pagination'];
 		$totalItemsPerPage	= $pagination['totalItemsPerPage'];
 		if($totalItemsPerPage > 0){
@@ -40,14 +39,7 @@ class BookModel extends Model{
 		$count = $this->rawQueryOne ($query);
 		return $count['count(id)'];
 	}
-	public function categoryName($params) {
-		$query	= "SELECT `name` FROM `".TBL_CATEGORY."` WHERE `id` = '" . $params['catID'] . "'";
-		return $this->rawQueryOne($query);
-	}
-	public function getItem($params) {
-		$query	= "SELECT `b`.`id`, `b`.`name`, `c`.`name` AS `category_name`, `b`.`price`, `b`.`sale_off`, `b`.`picture`, `b`.`description`, `b`.`category_id` FROM `".TBL_BOOK."` AS `b`, `".TBL_CATEGORY."` AS `c` WHERE `b`.`id` = '" . $params['bookID'] . "' AND `c`.`id` = `b`.`category_id`";
-		return $this->rawQueryOne($query);
-	}
+
 	public function getItemRelate($params) {
 		$bookID		= $params['bookID'];
 		$id  = $this->rawQueryOne('select category_id from '.TBL_BOOK.' where id ='.$bookID);
@@ -57,5 +49,14 @@ class BookModel extends Model{
 		$query	.= "WHERE `b`.`status`  = 'active'  AND `c`.`id` = `b`.`category_id` AND `b`.`id` <> '$bookID' AND `c`.`id`  = '$catID' ";
 		$query .= "ORDER BY `b`.`ordering` ASC";
 		return $this->rawQuery($query);
+	}
+	public function infoItem($params,$options) {
+		if($options['task'] == 'category-name') {
+			$query	= "SELECT `name` FROM `".TBL_CATEGORY."` WHERE `id` = '" . $params['catID'] . "'";
+		}
+		if($options['task'] == 'detail-book') {
+			$query	= "SELECT `b`.`id`, `b`.`name`, `c`.`name` AS `category_name`, `b`.`price`, `b`.`sale_off`, `b`.`picture`, `b`.`description`, `b`.`category_id` FROM `".TBL_BOOK."` AS `b`, `".TBL_CATEGORY."` AS `c` WHERE `b`.`id` = '" . $params['bookID'] . "' AND `c`.`id` = `b`.`category_id`";
+		}
+		return $this->rawQueryOne($query);
 	}
 }

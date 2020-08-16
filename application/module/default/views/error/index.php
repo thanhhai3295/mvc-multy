@@ -1,2 +1,1 @@
-<?php
-	echo $this->data;
+<?php include '404.html'; ?>

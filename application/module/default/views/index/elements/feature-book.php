@@ -3,8 +3,12 @@
   $xhtml = '';
   if (!empty($this->featureBook)) {
     foreach ($this->featureBook as $key => $value) {
-      $link    = URL::createLink('default','book','detail',['bookID' => $value['id']]);
       $name    = $value['name'];
+      $bookID  = $value['id'];
+      $catID	 = $value['category_id'];
+      $bookNameURL	= URL::filterURL($name);
+      $catNameURL		= URL::filterURL($value['category_name']);
+      $link = URL::createLink('default','book','detail',['bookID' => $bookID,'catID' => $catID],"$catNameURL/$bookNameURL-$catID-$bookID.html");
       $description = Helper::cutString($value['description'],200);
       $picture = Helper::createImage('book', '', $value['picture']);
       $xhtml .= '<div class="card" style="max-width: 540px;margin-bottom:20px;">

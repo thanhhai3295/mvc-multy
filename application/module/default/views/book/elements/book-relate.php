@@ -13,8 +13,12 @@
             $xhtml = '';
             if (!empty($this->bookRelate)) {
               foreach ($this->bookRelate as $key => $value) {
-                $link    = URL::createLink('default','book','detail',['bookID' => $value['id']]);
                 $name    = $value['name'];
+                $bookID  = $value['id'];
+                $catID	 = $value['category_id'];
+                $bookNameURL	= URL::filterURL($name);
+                $catNameURL		= URL::filterURL($value['category_name']);
+                $link = URL::createLink('default','book','detail',['bookID' => $bookID,'catID' => $catID],"$catNameURL/$bookNameURL-$catID-$bookID.html");
                 $picture = Helper::createImage('book', '98x150-', $value['picture']);
                 $xhtml .= '
                   <div class="col-md-3">

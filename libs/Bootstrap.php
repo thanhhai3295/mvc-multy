@@ -12,7 +12,7 @@ class Bootstrap{
 			$this->loadExistingController($filePath, $controllerName);
 			$this->callMethod();
 		}else{
-			URL::redirect('default', 'index', 'notice', array('type' => 'not-url'));
+			URL::redirect('default', 'error', 'notice', array('type' => 'not-url'));
 		}
 	}
 	
@@ -59,7 +59,7 @@ class Bootstrap{
 				}
 			}
 		}else{
-			URL::redirect('default', 'index', 'notice', array('type' => 'not-url'));
+			URL::redirect('default', 'error', 'notice', array('type' => 'not-url'));
 		}
 	}
 	

@@ -25,7 +25,7 @@
                 </div>';
     }
   }
-  $linkViewCart		= URL::createLink('default', 'user', 'cart');
+  $linkViewCart		= URL::createLink('default', 'user', 'cart',null,'cart.html');
   
 ?>
 <div class="my-cart">

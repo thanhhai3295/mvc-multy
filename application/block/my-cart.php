@@ -36,9 +36,13 @@
         <div class="cart-product">
         <?php echo $xhtml; ?>
         </div>
+        <div class="cart-totals">
+          <h5>Tổng Cộng<span><?php echo number_format($totalPrices) ?></span></h5>
+        </div>
         <div class="cart-bottom">
           <a class="view-cart" href="<?php echo $linkViewCart ?>">view cart</a>
         </div>
+        
       </div>
     </li>
   </ul>

@@ -4,6 +4,7 @@
 	$linkSubmitForm	= URL::createLink('default', 'user', 'buy');
 ?>
 <form action="<?php echo $linkSubmitForm;?>" method="POST" name="adminForm" id="adminForm">
+<input type="hidden" name="url">
 <div class="row">
   <div class="col-lg-12">
     <form action="#">
@@ -14,9 +15,9 @@
               <th class="product-thumbnail">Image</th>
               <th class="product-name">Product</th>
               <th class="product-price">Price</th>
-              <th class="product-quantity">Quantity</th>
+              <th class="product-quantity w-10">Quantity</th>
               <th class="product-subtotal">Total</th>
-              <th class="product-remove">Remove</th>
+              <th class="product-remove w-10">Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -25,10 +26,15 @@
             $sumPrice = 0;
             if(!empty($this->Items)) {
               foreach ($this->Items as $key => $value) {
-                $linkDetailBook = URL::createLink('default','book','detail',['bookID' => $value['id']]);
+                
                 $linkDelete = URL::createLink('default','user','delete',['bookID' => $value['id']]);
                 $picture = BOOK_URL.$value['picture'];
                 $name = $value['name'];
+                $bookID  = $value['id'];
+                $catID	 = $value['category_id'];
+                $bookNameURL	= URL::filterURL($name);
+                $catNameURL		= URL::filterURL($value['category_name']);
+                $linkDetailBook = URL::createLink('default','book','detail',['bookID' => $bookID,'catID' => $catID],"$catNameURL/$bookNameURL-$catID-$bookID.html");
                 $price = number_format($value['price']).'đ';
                 $quantity = $value['quantity'];
                 $totalprice = number_format($value['totalprice']).'đ';
@@ -39,8 +45,6 @@
                 $inputPrice		= Helper::cmsInput('hidden', 'form[price][]',$value['price']);
                 $inputName		= Helper::cmsInput('hidden', 'form[name][]',$value['name']);
                 $inputPicture		= Helper::cmsInput('hidden', 'form[picture][]',$value['picture']);
-
-
                 $xhtml .= '<tr>
                             <td class="product-thumbnail"><a href="'.$linkDetailBook.'"><img src="'.$picture.'" alt="man"></a></td>
                             <td class="product-name"><a href="'.$linkDetailBook.'">'.$name.'</a></td>

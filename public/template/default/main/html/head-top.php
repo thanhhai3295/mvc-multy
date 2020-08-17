@@ -1,5 +1,5 @@
 <?php 
-  $linkLogin = URL::createLink('default','index','login');
+  $linkLogin = URL::createLink('default','index','login',null,'login.html');
   $linkLogout = URL::createLink('default','index','logout');
   $checkLogin = isset($_SESSION['user']) ? true : false;
   if($checkLogin) {

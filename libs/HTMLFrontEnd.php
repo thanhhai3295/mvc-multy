@@ -5,14 +5,16 @@
                 <h2>'.$content.'</h2>
               </div>';
     }
-    public static function createFilter($data) {
+    public static function createFilter($data,$params) {
+      $filter = $params['filter'] ?? '';
       $xhtml = '<div class="toolbar-sorter">
                   <span>Sort By</span>
                   <select id="sort" onchange="location = this.value;">';
 
             
       foreach ($data as $key => $value) {
-        $xhtml .= '<option value="'.$value.'">'.$key.'</option>';
+        $selected = ($key == $filter) ? 'selected' : '';
+        $xhtml .= '<option value="'.$value.'" '.$selected.'>'.$key.'</option>';
       }             
       $xhtml .= '</select>
                   <a href="#"><i class="fa fa-arrow-down"></i></a>
@@ -29,6 +31,9 @@
     }
     public static function salePrice($sale,$price) {
       return (100-$sale)*($price/100);
+    }
+    public static function numberFormat($number) {
+      return number_format($number).'đ';
     }
     public static function noDataTable($colspan, $content){
       return '<tr><td colspan="'.$colspan.'">'.$content.'</td></tr>';

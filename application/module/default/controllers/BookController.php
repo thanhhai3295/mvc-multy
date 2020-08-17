@@ -11,6 +11,7 @@ class BookController extends DefaultController{
 		$this->_view->render($this->nameController.'/list');
 	}
 	public function detailAction(){
+
 		$this->_view->_title	 = 'Chi Tiết Sách';
 		$this->_view->bookInfo 		= $this->_model->infoItem($this->_arrParam,['task' => 'detail-book']);
 		if(empty($this->_view->bookInfo)) {

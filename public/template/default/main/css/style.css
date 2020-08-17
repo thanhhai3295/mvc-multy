@@ -6365,3 +6365,6 @@ div.most-product-img .specials {
     transform: rotate(30deg);
     font-size: 12px;
 }
+.w-10 {
+    width: 10% !important;
+}

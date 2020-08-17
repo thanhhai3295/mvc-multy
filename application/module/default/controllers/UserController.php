@@ -16,7 +16,6 @@ class UserController extends DefaultController{
 		$cart	= Session::get('cart');
 		$bookID	= $this->_arrParam['bookID'];
 		$price	= $this->_arrParam['price'];
-		
 		if(empty($cart)){
 			$cart[$bookID]['quantity']	= 1;
 			$cart[$bookID]['price']		= $price;
@@ -36,7 +35,7 @@ class UserController extends DefaultController{
 		
 		Session::set('cart', $cart);
 		Session::set('success',SUCCESS_ADD_CART);
-		URL::redirect('default', 'book', 'detail', array('bookID' => $bookID));
+		$this->redirectCurrentURL();
 	}
 
 	public function historyAction(){
@@ -49,10 +48,10 @@ class UserController extends DefaultController{
 		if(isset($this->_arrParam['form'])) {
 			$this->_model->saveItem($this->_arrParam, array('task' => 'submit-cart'));
 			Session::set('success',SUCCESS_BUY_CART);
-			URL::redirect('default', 'index', 'index');
+			$this->redirectCurrentURL();
 		} else {
 			Session::set('error',ERROR_BUY_CART);
-			URL::redirect('default', 'index', 'index');
+			$this->redirectCurrentURL();
 		}	
 	}
 	public function deleteAction(){
@@ -65,7 +64,7 @@ class UserController extends DefaultController{
 	public function deleteHistoryAction(){
 		$this->_model->deleteHistory($this->_arrParam);
 		Session::set('success',SUCCESS_HISTORY);
-		$this->redirect('default','user','history');
+		$this->redirectCurrentURL();
 	}
 }
 

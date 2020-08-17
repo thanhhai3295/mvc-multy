@@ -4,6 +4,7 @@ $('#adminForm').submit();
 }
 
 function submitForm(){
+  $('input[name=url]').val(window.location.href);
   $('#adminForm').submit();
 }
 function submitURL(url){
@@ -11,12 +12,7 @@ function submitURL(url){
   $('input[name=url]').val(window.location.href);
   $('#urlForm').submit();
 }
-function deleteHistory(url,book_id,cart_id) {
-  $('#deleteHistory').attr('action', url);
-  $('input[name=book_id]').val(book_id);
-  $('input[name=cart_id]').val(cart_id);
-  $('#deleteHistory').submit();
-}
+
 $(document).ready(function() {
  
   // var matchesFilter = url.match(/filter=([^&]*)/);

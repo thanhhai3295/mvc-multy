@@ -22,8 +22,8 @@
     $arrPicture		= json_decode($value['pictures']);
     $tableContent	= '';
     $totalPrice		= 0;
-    $linkDeleteHistory = URL::createLink('default','user','deleteHistory');
     foreach ($arrBookID as $keyB => $valueB){
+      $linkDeleteHistory = URL::createLink('default','user','deleteHistory',['book_id' => $valueB,'cart_id' => $cartId]);
       $linkDetail		= URL::createLink('default', 'book', 'detail', array('book_id' => $valueB));
       $picture = Helper::createImage('book','','98x150-'.$arrPicture[$keyB],['width'=>'30','height' => '45']);
       $totalPrice		+= $arrQuantity[$keyB] * $arrPrice[$keyB];
@@ -33,7 +33,7 @@
               <td>'.number_format($arrPrice[$keyB]).'</td>
               <td>'.$arrQuantity[$keyB].'</td>
               <td>'.number_format($arrQuantity[$keyB] * $arrPrice[$keyB]).'</td>
-              <td class="product-remove"><a href="#" onClick="deleteHistory(\''.$linkDeleteHistory.'\',\''.$valueB.'\',\''.$cartId.'\')"><i class="fa fa-times"></i></a></td>
+              <td class="product-remove"><a href="#" onClick="submitURL(\''.$linkDeleteHistory.'\')"><i class="fa fa-times"></i></a></td>
             </tr>';
     }
 
@@ -52,12 +52,11 @@
 ?>
 <div class="row">
   <div class="col-lg-12">
-    <form action="" method="POST" id="deleteHistory">
+    <form action="" method="POST" id="urlForm">
+      <input type="hidden" name="url">
       <div class="table-content table-responsive">
         <?php echo $xhtml; ?>
       </div>
-      <input type="hidden" name="book_id">
-      <input type="hidden" name="cart_id">
     </form>
   </div>
 </div>

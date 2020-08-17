@@ -81,12 +81,8 @@ class Pagination{
 	}
 
 	public function FrontEndPagination($params){
-		$link = URL::createLink($params['module'],$params['controller'],$params['action']);
-		if(isset($params['catID'])) {
-			$link = $link.'&catID='.$params['catID'].'&filter_page=';
-		} else {
-			$link .= '&filter_page=';
-		}
+		$controller = $params['controller'];
+		$link = URL::createLink($params['module'],$params['controller'],$params['action'],null,"$controller/page-");
 		
 		// Pagination
 		$paginationHTML = '';

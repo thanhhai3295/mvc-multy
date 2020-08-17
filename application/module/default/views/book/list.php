@@ -1,9 +1,10 @@
 <?php 
-  $catID = $_GET['catID']??'';
-  $linkNew      = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'new','catID' => $catID]);
-  $LinkName     = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'name','catID' => $catID]);
-  $LinkOrdering = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'ordering','catID' => $catID]);
-  $linkPrice      = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'price','catID' => $catID]);
+  $catID = $this->arrParam['catID']??'';
+  $catName = URL::filterURL($this->categoryName['name']);
+  $linkNew      = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'new','catID' => $catID],"new/$catName-$catID.html");
+  $LinkName     = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'name','catID' => $catID],"name/$catName-$catID.html");
+  $LinkOrdering = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'ordering','catID' => $catID],"ordering/$catName-$catID.html");
+  $linkPrice      = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'price','catID' => $catID],"price/$catName-$catID.html");
   $data = [
     'new' => $linkNew,
     'name' => $LinkName,
@@ -21,7 +22,7 @@
     </div>
 
   </div>
-  <?php HTMlFrontEnd::createFilter($data)?>
+  <?php HTMlFrontEnd::createFilter($data,$this->arrParam)?>
 </div>
 <div class="tab-content">
   <div class="tab-pane active" id="th">
@@ -33,8 +34,10 @@
               $name    = $value['name'];
               $bookID  = $value['id'];
               $catID	 = $value['category_id'];
+              $price   = $value['price'];        
+              $productPrice = '<div class="product-price"><ul><li>'.HTMLFrontEnd::numberFormat($price).'</li></ul></div>';
               $bookNameURL	= URL::filterURL($name);
-              $catNameURL		= URL::filterURL($this->categoryName['name']);
+              $catNameURL		= URL::filterURL($catName);
               $link = URL::createLink('default','book','detail',['bookID' => $bookID,'catID' => $catID],"$catNameURL/$bookNameURL-$catID-$bookID.html");
               $description = Helper::cutString($value['description'],200);
               $picture = Helper::createImage('book', '', $value['picture'],['class'=>'img-thumbnail']);
@@ -45,7 +48,7 @@
                               <div class="card-body">
                                 <h5 class="card-title"><a href="'.$link.'">'.$name.'</a></h5>
                                 <p class="card-text">'.$description.'</p>
-                              </div>
+                              </div>'.$productPrice.'
                             </div>
                           </div>
                         </div><hr>';

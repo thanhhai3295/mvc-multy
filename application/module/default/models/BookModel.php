@@ -6,7 +6,7 @@ class BookModel extends Model{
 	}
 	public function listItems($params,$options) {
 		$catID		= $params['catID'];
-		$query	= "SELECT `id`, `name`, `picture`, `description`, `category_id`";
+		$query	= "SELECT `id`, `name`, `picture`, `description`, `category_id`,`price`";
 		$query	.= "FROM `$this->table`";
 		$query	.= "WHERE `status`  = 'active' AND `category_id` = '$catID'";
 		if(isset($params['filter'])) {

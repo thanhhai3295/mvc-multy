@@ -1,7 +1,7 @@
 <?php 
-  $linkNew      = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'new']);
-  $LinkName     = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'name']);
-  $LinkOrdering = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'ordering']);
+  $linkNew      = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'new'],"new/category.html");
+  $LinkName     = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'name'],"name/category.html");
+  $LinkOrdering = URL::createLink('default',$this->arrParam['controller'],'list',['filter' => 'ordering'],"ordering/category.html");
   $data = [
     'new' => $linkNew,
     'name' => $LinkName,
@@ -18,7 +18,7 @@
     </div>
 
   </div>
-  <?php HTMlFrontEnd::createFilter($data)?>
+  <?php HTMlFrontEnd::createFilter($data,$this->arrParam)?>
 </div>
 
 <div class="tab-content">
@@ -28,8 +28,10 @@
           $xhtml = '';
           if (!empty($this->items)) {
             foreach ($this->items as $key => $value) {
-              $link    = URL::createLink('default','book','list',['catID' => $value['id']]);
+              
               $name    = $value['name'];
+              $id = $value['id'];
+              $link    = URL::createLink('default','book','list',['catID' => $value['id']],URL::filterURL($name).'-'.$id.'.html');
               $picture = Helper::createImage('category', '', $value['picture']);
               $xhtml .= '<div class="col-lg-3 col-md-4 col-sm-6">
                           <div class="product-wrapper mb-40 hidden-md hidden-sm">

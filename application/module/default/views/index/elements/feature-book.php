@@ -4,6 +4,8 @@
   if (!empty($this->featureBook)) {
     foreach ($this->featureBook as $key => $value) {
       $name    = $value['name'];
+      $price   = $value['price'];
+      $productPrice = '<div class="product-price"><ul><li>'.HTMLFrontEnd::numberFormat($price).'</li></ul></div>';     
       $bookID  = $value['id'];
       $catID	 = $value['category_id'];
       $bookNameURL	= URL::filterURL($name);
@@ -17,7 +19,7 @@
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title"><a href="'.$link.'">'.$name.'</a></h5>
-                        <p class="card-text">'.$description.'</p>
+                        <p class="card-text">'.$description.'</p>'.$productPrice.'
                       </div>
                     </div>
                   </div>

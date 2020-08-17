@@ -28,11 +28,6 @@
 					<?php include 'html/shop-left.php' ?>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-					<!-- <div class="category-image mb-30">
-						<a href="#"><img src="public/template/default/main/img/banner/32.jpg" alt="banner" /></a>
-					</div> -->
-					
-					<!-- tab-area-start -->
 					<?php
 						require_once MODULE_PATH. $this->_moduleName . DS . 'views' . DS .  $this->_fileView . '.php';
 					?>

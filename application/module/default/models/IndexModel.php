@@ -5,7 +5,7 @@ class IndexModel extends Model{
 	
 	}
 	public function listItems($params, $options) {
-		$query	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`, `b`.`description`, `b`.`category_id`, `c`.`name` AS `category_name` ";
+		$query	= "SELECT `b`.`id`, `b`.`name`,`b`.`price`, `b`.`picture`, `b`.`description`, `b`.`category_id`, `c`.`name` AS `category_name` ";
 		$query	.= "FROM `".TBL_BOOK."` AS `b`, `".TBL_CATEGORY."` AS `c` ";
 		if($options['task'] == 'feature-book') {
 			$query	.= "WHERE `b`.`status`  = 'active' AND `b`.`special` = 1 AND `c`.`id` = `b`.`category_id` ";

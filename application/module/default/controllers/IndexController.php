@@ -40,6 +40,7 @@ class IndexController extends DefaultController{
 
 	public function logoutAction(){
 		Session::delete('user');
+		Session::delete('cart');
 		$this->redirectCurrentURL();
 	}
 

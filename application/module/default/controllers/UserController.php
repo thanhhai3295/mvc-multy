@@ -1,13 +1,19 @@
 <?php
 class UserController extends DefaultController{
-	
+	public function __construct($arrParams){
+		parent::__construct($arrParams);
+		$this->_templateObj->setFolderTemplate('default/user/');
+		$this->_templateObj->setFileTemplate('index.php');
+		$this->_templateObj->setFileConfig('template.ini');
+		$this->_templateObj->load();
+	}
 	public function indexAction(){
-		$this->_view->_title	= 'My Account';
+		$this->_view->_title	= 'Tài Khoản';
 		$this->_view->render($this->nameController.'/index');
 	}
 	
 	public function cartAction(){
-		$this->_view->_title	= 'My Cart';
+		$this->_view->_title	= 'Giỏ Hàng';
 		$this->_view->Items		= $this->_model->listItem($this->_arrParam, array('task' => 'books-in-cart'));
 		$this->_view->render($this->nameController.'/cart');
 	}

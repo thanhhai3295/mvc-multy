@@ -1,34 +1,24 @@
 <?php 
-  HTMLFrontEnd::showTitle($this->_title);
   $linkCategory	= URL::createLink('default', 'category', 'index');
-	$linkSubmitForm	= URL::createLink('default', 'user', 'buy');
+  $linkSubmitForm	= URL::createLink('default', 'user', 'buy');
+  $tableHeader = '<thead class="thead-light"><tr><th>IMAGE</th><th>PRODUCT</th><th>PRICE</th><th>QUANTITY</th><th>TOTAL</th><th>REMOVE</th></tr></thead>';
 ?>
 <form action="<?php echo $linkSubmitForm;?>" method="POST" name="adminForm" id="adminForm">
 <input type="hidden" name="url">
-<div class="row">
-  <div class="col-lg-12">
-    <form action="#">
-      <div class="table-content table-responsive">
-        <table>
-          <thead>
-            <tr>
-              <th class="product-thumbnail">Image</th>
-              <th class="product-name">Product</th>
-              <th class="product-price">Price</th>
-              <th class="product-quantity w-10">Quantity</th>
-              <th class="product-subtotal">Total</th>
-              <th class="product-remove w-10">Remove</th>
-            </tr>
-          </thead>
-          <tbody>
+<div class="tab-pane fade" id="orders" role="tabpanel">
+  <div class="myaccount-content">
+    <h5><?php echo $this->_title ?></h5>
+    <div class="myaccount-table table-responsive text-center">
+    <table class="table table-bordered">
+      <?php echo $tableHeader ?>
+        <tbody>
           <?php 
             $xhtml = '';
             $sumPrice = 0;
             if(!empty($this->Items)) {
               foreach ($this->Items as $key => $value) {
-                
                 $linkDelete = URL::createLink('default','user','delete',['bookID' => $value['id']]);
-                $picture = BOOK_URL.$value['picture'];
+                $picture = Helper::createImage('book','98x150-',$value['picture'],['width'=>30,'height']);
                 $name = $value['name'];
                 $bookID  = $value['id'];
                 $catID	 = $value['category_id'];
@@ -39,19 +29,18 @@
                 $quantity = $value['quantity'];
                 $totalprice = number_format($value['totalprice']).'đ';
                 $sumPrice += $value['totalprice'];                
-
                 $inputBookID	= Helper::cmsInput('hidden', 'form[bookid][]',$value['id']);
                 $inputQuantity	= Helper::cmsInput('hidden', 'form[quantity][]',$value['quantity']);
                 $inputPrice		= Helper::cmsInput('hidden', 'form[price][]',$value['price']);
                 $inputName		= Helper::cmsInput('hidden', 'form[name][]',$value['name']);
                 $inputPicture		= Helper::cmsInput('hidden', 'form[picture][]',$value['picture']);
                 $xhtml .= '<tr>
-                            <td class="product-thumbnail"><a href="'.$linkDetailBook.'"><img src="'.$picture.'" alt="man"></a></td>
+                            <td class="product-thumbnail"><a href="'.$linkDetailBook.'">'.$picture.'</td>
                             <td class="product-name"><a href="'.$linkDetailBook.'">'.$name.'</a></td>
                             <td class="product-price"><span class="amount">'.$price.'</span></td>
-                            <td class="product-quantity"><input type="number" value="'.$quantity.'"></td>
+                            <td class="product-quantity w-10">'.$quantity.'</td>
                             <td class="product-subtotal">'.$totalprice.'</td>
-                            <td class="product-remove"><a href="#" onClick="submitURL(\''.$linkDelete.'\')"><i class="fa fa-times"></i></a></td>
+                            <td class="product-remove"><a class="remove" href="#" onClick="submitURL(\''.$linkDelete.'\')"><i class="fa fa-times"></i></a></td>
                           </tr>';
                 $xhtml	.= $inputBookID . $inputQuantity . $inputPrice . $inputName . $inputPicture;
               }
@@ -61,12 +50,10 @@
             echo $xhtml;
           ?>
           </tbody>
-        </table>
-      </div>
-    </form>
+      </table>
+    </div>
   </div>
 </div>
-
-<?php include 'elements/cart-total.php' ?>
-
 </form>
+<?php //include 'elements/cart-total.php' ?>
+

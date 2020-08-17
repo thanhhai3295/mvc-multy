@@ -3,7 +3,7 @@
 	$username 	= $this->arrParam['form']['username'] ?? '';
 	$password 	= $this->arrParam['form']['password'] ?? '';
   $error 			= isset($this->errors) ? 'Tài Khoản Hoặc Mật Khẩu Không Đúng!' : '';
-  $actual_link = $this->arrParam['url']??'';
+  $actual_link = isset($this->arrParam['url']) ? $this->arrParam['url'] :'my-account.html';
 ?>
 <div class="container">
   <?php HTMLFrontEnd::showTitle($this->_title); ?>

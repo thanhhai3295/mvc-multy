@@ -14,7 +14,6 @@ class IndexController extends DefaultController{
 			URL::redirect('default', 'user', 'index',null,'my-account.html');
 		}
 		$this->_view->_title 		= 'Login';
-	
 		if(isset($this->_arrParam['form']['token'])){
 			$username		= $this->_arrParam['form']['username'];
 			$password	= md5($this->_arrParam['form']['password']);

@@ -6,7 +6,7 @@
     $name = $_SESSION['user']['info']['fullname'];
     $menu = '<li>Xin Chào '.$name.' | <a href="#" onClick="submitURL(\''.$linkLogout.'\')"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a></li>';
   } else {
-    $menu = '<li><a href="'.$linkLogin.'"><i class="far fa-user"></i> Đăng Nhập</a></li>';
+    $menu = '<li><a href="#" onClick="submitURL(\''.$linkLogin.'\')"><i class="far fa-user"></i> Đăng Nhập</a></li>';
   }
 ?>
 <div class="header-top-area">

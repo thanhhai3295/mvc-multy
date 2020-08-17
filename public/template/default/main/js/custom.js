@@ -12,7 +12,9 @@ function submitURL(url){
   $('input[name=url]').val(window.location.href);
   $('#urlForm').submit();
 }
-
+function submit(name){
+  $('#'+name).submit();
+}
 $(document).ready(function() {
  
   // var matchesFilter = url.match(/filter=([^&]*)/);

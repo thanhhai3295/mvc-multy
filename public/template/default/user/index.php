@@ -36,12 +36,11 @@
 						<!-- My Account Tab Content Start -->
 						<div class="col-lg-9 col-md-8">
 							<div class="tab-content" id="myaccountContent">
-							<form action="" method="POST" id="urlForm">
-							<input type="hidden" name="url">
+							
 							<?php
 								require_once MODULE_PATH. $this->_moduleName . DS . 'views' . DS .  $this->_fileView . '.php';
 							?>
-							</form>
+							
 							</div>
 						</div>
 						<!-- My Account Tab Content End -->
@@ -53,6 +52,9 @@
     </div>
   </div>
 </div>
+<form action="" method="POST" id="urlForm">
+<input type="hidden" name="url">
+</form>
 		<?php 
       include 'html/footer.php'; 
       echo $this->_jsFiles;

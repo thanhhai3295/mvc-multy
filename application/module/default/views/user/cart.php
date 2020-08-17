@@ -1,5 +1,5 @@
 <?php 
-  $linkCategory	= URL::createLink('default', 'category', 'index');
+  $linkCategory	= URL::createLink('default', 'category', 'index',null,'category.html');
   $linkSubmitForm	= URL::createLink('default', 'user', 'buy');
   $tableHeader = '<thead class="thead-light"><tr><th>IMAGE</th><th>PRODUCT</th><th>PRICE</th><th>QUANTITY</th><th>TOTAL</th><th>REMOVE</th></tr></thead>';
 ?>
@@ -55,5 +55,5 @@
   </div>
 </div>
 </form>
-<?php //include 'elements/cart-total.php' ?>
+<?php include 'elements/cart-total.php' ?>
 

@@ -6,3 +6,7 @@ function submitURL(url){
   $('input[name=url]').val(window.location.href);
   $('#urlForm').submit();
 }
+function submitForm(){
+  $('input[name=url]').val(window.location.href);
+  $('#adminForm').submit();
+}

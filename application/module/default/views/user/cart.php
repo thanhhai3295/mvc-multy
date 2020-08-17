@@ -5,7 +5,7 @@
 ?>
 <form action="<?php echo $linkSubmitForm;?>" method="POST" name="adminForm" id="adminForm">
 <input type="hidden" name="url">
-<div class="tab-pane fade" id="orders" role="tabpanel">
+<div>
   <div class="myaccount-content">
     <h5><?php echo $this->_title ?></h5>
     <div class="myaccount-table table-responsive text-center">
@@ -40,7 +40,7 @@
                             <td class="product-price"><span class="amount">'.$price.'</span></td>
                             <td class="product-quantity w-10">'.$quantity.'</td>
                             <td class="product-subtotal">'.$totalprice.'</td>
-                            <td class="product-remove"><a class="remove" href="#" onClick="submitURL(\''.$linkDelete.'\')"><i class="fa fa-times"></i></a></td>
+                            <td class="product-remove"><a href="#" onClick="submitURL(\''.$linkDelete.'\')"><i class="fa fa-times"></i></a></td>
                           </tr>';
                 $xhtml	.= $inputBookID . $inputQuantity . $inputPrice . $inputName . $inputPicture;
               }

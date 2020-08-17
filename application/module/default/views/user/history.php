@@ -1,17 +1,7 @@
 <?php 
-  HTMLFrontEnd::showTitle($this->_title);
   $xhtml = '';
   if(!empty($this->Items)){
-    $tableHeader = '<thead>
-                      <tr>
-                        <th class="product-thumbnail">Image</th>
-                        <th class="product-name">Product</th>
-                        <th class="product-price">Price</th>
-                        <th class="product-quantity">Quantity</th>
-                        <th class="product-subtotal">Total</th>
-                        <th class="product-remove">Remove</th>
-                      </tr>
-                    </thead>';
+    $tableHeader = '<thead><tr><th class="product-thumbnail">Image</th><th class="product-name">Product</th><th class="product-price">Price</th><th class="product-quantity">Quantity</th><th class="product-subtotal">Total</th><th class="product-remove">Remove</th></tr></thead>';
   foreach($this->Items as $key => $value){
     $cartId			= $value['id'];
     $date			= date("H:i d/m/Y", strtotime($value['date']));
@@ -37,26 +27,25 @@
             </tr>';
     }
 
-    $xhtml .= '<h4>Mã đơn hàng:'.$cartId.' - Thời gian: '.$date.'</h4>
-              <table>
+    $xhtml .= '<div class="myaccount-content pb-0">
+                <h5>Mã đơn hàng:'.$cartId.' - Thời gian: '.$date.'</h5>
+                <div class="myaccount-table table-responsive text-center">
+                <div class="table-content table-responsive">
+              <table class="table table-bordered mb-3">
               '.$tableHeader.'
               <tbody>
                 '.$tableContent.'
               </tbody>
             </table>';
-    $xhtml .= '<h4 class="amount text-right">Total: <span style="color:red";>'.number_format($totalPrice).'đ</span></h3><hr>'; 
+    $xhtml .= '<p class="text-right font-weight-bold">Total: <span style="color:red";>'.number_format($totalPrice).'đ</span></p></div></div></div>'; 
   }
   } else {
     $xhtml = HTMLFrontEnd::noData(NO_ORDER);
   }
 ?>
-<div class="row">
-  <div class="col-lg-12">
-    <form action="" method="POST" id="urlForm">
-      <input type="hidden" name="url">
-      <div class="table-content table-responsive">
+<form action="" method="POST" id="urlForm">
+<input type="hidden" name="url">
+<div> 
         <?php echo $xhtml; ?>
-      </div>
-    </form>
-  </div>
 </div>
+</form>

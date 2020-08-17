@@ -1,7 +1,7 @@
 <?php
   $name = $_SESSION['user']['info']['fullname'];
 ?>
-<div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+<div>
   <div class="myaccount-content">
     <h5>Bảng điều khiển</h5>
     <div class="welcome">

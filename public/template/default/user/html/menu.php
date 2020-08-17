@@ -32,7 +32,7 @@
                   ?>
                 </div>
               </li>
-              <li><a href="<?php echo $linkMyAccount ?>">Tài Khoản<i class="fa fa-angle-down"></i></a>
+              <li class="active"><a href="<?php echo $linkMyAccount ?>">Tài Khoản<i class="fa fa-angle-down"></i></a>
               
             </ul>
           </nav>

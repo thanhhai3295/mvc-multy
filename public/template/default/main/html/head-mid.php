@@ -5,6 +5,7 @@
     $linkSearch = URL::createLink('default','book','search',null,"search=$search");
     header('location: '.$linkSearch);
   }
+  $valueSearch = $this->arrParam['filter-search']??'';
 ?>
 <div class="header-mid-area ptb-40">
   <div class="container">
@@ -12,7 +13,7 @@
       <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
         <div class="header-search">
           <form action="" method="POST" id="searchForm">
-            <input type="text" placeholder="Nhập Tên Sách..." name="search" value="<?php echo $search ?>" />
+            <input type="text" placeholder="Nhập Tên Sách..." name="search" value="<?php echo $valueSearch ?>" />
             <a href="#" onclick="submit('searchForm')"><i class="fa fa-search"></i></a>
           </form>
         </div>

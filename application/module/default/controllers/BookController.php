@@ -20,6 +20,7 @@ class BookController extends DefaultController{
 	}
 	public function searchAction(){
 		$this->_view->items	 = $this->_model->listItems($this->_arrParam,['task' => 'search-book']);
+		$this->_view->_title = 'Có '.count($this->_view->items).' Sản Phẩm';
 		$this->_view->render($this->nameController.'/search');
 	}
 } 

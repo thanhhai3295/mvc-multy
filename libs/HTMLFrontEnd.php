@@ -57,5 +57,8 @@
       }
       
     }
+    public static function addSpanSearch($str,$search,$color="red"){
+      return str_replace($search, "<span style='color:$color;'>$search</span>", $str);
+    }
   }
 ?>

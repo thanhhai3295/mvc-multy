@@ -1,6 +1,9 @@
 <?php 
   $xhtml = '';
+  $valueSearch = $this->arrParam['filter-search'];
   if(!empty($this->items)) {
+    $count = count($this->items);
+    $xhtml .= '<h3>Kết quả tìm kiếm cho \''.$valueSearch.'\': <span style="color:red;">'.$count.'</span> kết quả </h3>';
     foreach ($this->items as $key => $value) {
       $name    = $value['name'];
       $bookID  = $value['id'];
@@ -36,7 +39,7 @@
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
           <div class="product-wrapper-content">
             <div class="product-details">
-              <h4><a href="'.$linkDetail.'">'.$name.'</a></h4>
+              <h4><a href="'.$linkDetail.'">'.HTMLFrontEnd::addSpanSearch($name,$valueSearch).'</a></h4>
               '.$productPrice.'             
               <p>'.$description.'</p>
             </div>
@@ -57,7 +60,7 @@
 
     }
   } else {
-
+    $xhtml = '<h3>Không tìm thấy kết quả cho "'.$valueSearch.'"</h3>';
   }
   echo $xhtml;
 ?>

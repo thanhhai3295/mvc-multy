@@ -1,6 +1,7 @@
 <?php 
   $name        = $this->bookInfo['name'];
   $picture     = BOOK_URL.$this->bookInfo['picture'];
+  $largePicture = BOOK_LARGE_URL.$this->bookInfo['picture'];
   $description = $this->bookInfo['description'];
   $price       = $this->bookInfo['price'];
   $sale        = $this->bookInfo['sale_off'];
@@ -19,7 +20,7 @@
   <div class="row">
     <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
     <a href="<?php echo $picture ?>" data-fancybox="images">
-      <img src="<?php echo $picture ?>" style="width:100%" class="img-thumbnail" />
+      <img id="zoom_01" src="<?php echo $picture ?>" style="width:100%" class="img-thumbnail" data-zoom-image="<?php echo $largePicture ?>"/>
     </a>
     </div>
     <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">

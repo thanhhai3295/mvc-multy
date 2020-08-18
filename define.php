@@ -18,7 +18,7 @@
 	define	('UPLOAD_URL'		, PUBLIC_URL . 'files' . DS);
 	define	('TEMPLATE_URL'	, PUBLIC_URL . 'template' . DS);
 	define  ('BOOK_URL'			,UPLOAD_URL.'book'.DS);
-	
+	define  ('BOOK_LARGE_URL'			,BOOK_URL.'large'.DS);
 	define	('DEFAULT_MODULE'		, 'default');
 	define	('DEFAULT_CONTROLLER'	, 'index');
 	define	('DEFAULT_ACTION'		, 'index');

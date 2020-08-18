@@ -16,7 +16,10 @@ function submit(name){
   $('#'+name).submit();
 }
 $(document).ready(function() {
- 
+  $("#zoom_01").elevateZoom({
+    zoomWindowWidth:500,
+    zoomWindowHeight:500
+  });
   // var matchesFilter = url.match(/filter=([^&]*)/);
   // var filter = matchesFilter[1];
   // var sort = document.querySelectorAll("select#sort option");

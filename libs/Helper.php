@@ -169,21 +169,18 @@ class Helper{
   
   public static function createMessage(){
 		$str = ''; $type = ''; 
-		if (count($_SESSION) > 1) {
-			foreach ($_SESSION as $key => $value) {
-				if ($key != 'user') {
-					$str = $value;
-					$type = $key;
-					unset($_SESSION[$key]);
-				}
-			}
-		} else {
-			return ;
-		}
-		$type = strtolower(str_replace('msg','',$type));
-		$xhtml = "<script>message('$str','$type');</script>";
-		
-    return $xhtml;
+      if (count($_SESSION) > 1) {
+        foreach ($_SESSION as $key => $value) {
+          if ($key == 'success' || $key == 'error') {
+            $str = $value;
+            $type = $key;
+            unset($_SESSION[$key]);
+            echo "<script>message('$str','$type');</script>";
+          }
+        }
+      } else {
+        return ;
+      }
   }
 
   public static function createFilter($params, $count, $selectBox = null){

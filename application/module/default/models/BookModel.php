@@ -5,30 +5,38 @@ class BookModel extends Model{
 		$this->setTable(TBL_BOOK);
 	}
 	public function listItems($params,$options) {
-		$catID		= $params['catID'];
-		$query	= "SELECT `id`, `name`, `picture`, `description`, `category_id`,`price`";
-		$query	.= "FROM `$this->table`";
-		$query	.= "WHERE `status`  = 'active' AND `category_id` = '$catID'";
-		if(isset($params['filter'])) {
-			if($params['filter'] != 'new') {
-				$filter = $params['filter'];
-				$query .= "ORDER BY ".$filter." DESC ";
-			} else {
-				$query .= "ORDER BY ID DESC ";
+			
+			$query	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`, `b`.`description`, `b`.`category_id`,`b`.`price`,`b`.`sale_off`,`c`.`name` AS `category_name`";
+			$query	.= "FROM `$this->table` as `b`,`".TBL_CATEGORY."` as `c`";
+			$query .= "WHERE `b`.`category_id` = `c`.`id` ";
+			if($options['task'] == NULL) {
+				$catID		= $params['catID'];
+				$query	.= "AND `b`.`status`  = 'active' AND `b`.`category_id` = '$catID'";
 			}
-		} else {
-			$query .= "ORDER BY ID DESC ";
-		}
+			if($options['task'] == 'search-book') {
+				$search = $params['filter-search'];
+				$query	.= "AND `b`.`status`  = 'active' AND `b`.`name` like '%$search%'";
+			}
+			if(isset($params['filter'])) {
+				if($params['filter'] != 'new') {
+					$filter = $params['filter'];
+					$query .= "ORDER BY `b`.".$filter." DESC ";
+				} else {
+					$query .= "ORDER BY `b`.`ID` DESC ";
+				}
+			} else {
+				$query .= "ORDER BY `b`.`ID` DESC ";
+			}
+			
+			$pagination					= $params['pagination'];
+			$totalItemsPerPage	= $pagination['totalItemsPerPage'];
+			if($totalItemsPerPage > 0){
+				$position	= ($pagination['currentPage']-1)*$totalItemsPerPage;
+				$query.= " LIMIT $position, $totalItemsPerPage";
+			}
+			$result = $this->rawQuery($query);
+			return $result;
 		
-		$pagination					= $params['pagination'];
-		$totalItemsPerPage	= $pagination['totalItemsPerPage'];
-		if($totalItemsPerPage > 0){
-			$position	= ($pagination['currentPage']-1)*$totalItemsPerPage;
-			$query.= " LIMIT $position, $totalItemsPerPage";
-		}
-		
-		$result = $this->rawQuery($query);
-		return $result;
 	}
 
 	public function countItem($params) {

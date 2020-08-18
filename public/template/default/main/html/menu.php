@@ -3,6 +3,7 @@
   $linkCategory = URL::createLink('default','category','list',null,'category.html');
   $linkMyAccount = URL::createLink('default','user','index',null,'my-account.html');
   $controller = !empty($this->arrParam['controller']) ? $this->arrParam['controller'] : 'index';
+  $action = $this->arrParam['action'];
 ?>
 <div class="main-menu-area hidden-sm hidden-xs sticky-header-1" id="header-sticky">
   <div class="container">
@@ -32,8 +33,7 @@
                   ?>
                 </div>
               </li>
-              <li><a href="<?php echo $linkMyAccount ?>">Tài Khoản<i class="fa fa-angle-down"></i></a>
-              
+              <li><a href="<?php echo $linkMyAccount ?>">Tài Khoản</a>
             </ul>
           </nav>
         </div>
@@ -45,8 +45,9 @@
 <script type="text/javascript">
   $(document).ready(function() {
     var controller = '<?php echo $controller ?>';
+    var action = '<?php echo $action ?>';
     if(controller == 'index') controller = 'trang chủ';
-    if(controller == 'category') controller = 'thể loại';
+    if(controller == 'category' || (controller == 'book')) controller = 'thể loại';
     if(controller == 'user') controller = 'tài khoản';
     var li = document.querySelectorAll('div.menu-area nav ul li');
     li.forEach(element => {

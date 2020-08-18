@@ -80,9 +80,9 @@ class Pagination{
 		return $paginationHTML;
 	}
 
-	public function FrontEndPagination($params){
+	public function FrontEndPagination($params,$name){
 		$controller = $params['controller'];
-		$link = URL::createLink($params['module'],$params['controller'],$params['action'],null,"$controller/page-");
+		$link = URL::createLink($params['module'],$params['controller'],$params['action'],null,"$name/page-");
 		
 		// Pagination
 		$paginationHTML = '';

@@ -31,7 +31,7 @@ class BookController extends AdminController{
 			} else {
 				
 				$this->_model->saveItem($this->_arrParam);		
-				Session::set('msgSuccess',isset($this->_arrParam['id']) ? 'Edit '.ucfirst($this->nameController).' Success!' : 'Add '.ucfirst($this->nameController).' Success!');
+				Session::set('success',isset($this->_arrParam['id']) ? 'Edit '.ucfirst($this->nameController).' Success!' : 'Add '.ucfirst($this->nameController).' Success!');
 				$this->redirectList();		
 			}
 		}

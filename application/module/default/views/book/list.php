@@ -11,8 +11,8 @@
     'ordering' => $LinkOrdering,
     'price' => $linkPrice
   ];
-  $pagination = $this->pagination->frontEndPagination($this->arrParam);
-  HTMLFrontEnd::showTitle($this->_title);
+  $pagination = $this->pagination->frontEndPagination($this->arrParam,$catName.'-'.$catID);
+  HTMLFrontEnd::showTitle($this->_titleContent);
 ?>
 
 <div class="toolbar mb-30">

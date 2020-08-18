@@ -7,7 +7,7 @@
     'name' => $LinkName,
     'ordering' => $LinkOrdering,
   ];
-  $pagination = $this->pagination->frontEndPagination($this->arrParam);
+  $pagination = $this->pagination->frontEndPagination($this->arrParam,'category');
   HTMLFrontEnd::showTitle($this->_title);
 ?>
 

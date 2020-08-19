@@ -1,6 +1,6 @@
 <?php 
   $search = $this->arrParam['search']??'';
-  $search = trim($search);
+  $search = Helper::replaceString(trim($search),'+');
   if(!empty($search)) {
     $linkSearch = URL::createLink('default','book','search',null,"search=$search");
     header('location: '.$linkSearch);

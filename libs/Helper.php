@@ -322,4 +322,7 @@ class Helper{
 			else return substr($string,0,$index).'...';
 		}
 	}
+	public static function replaceString($string, $replace){
+		return str_replace(' ',$replace,$string);
+	}
 }
